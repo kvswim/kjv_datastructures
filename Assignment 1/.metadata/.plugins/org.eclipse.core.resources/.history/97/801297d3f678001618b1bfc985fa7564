@@ -1,0 +1,7 @@
+
+public interface ResetableCounter extends Counter {
+	int value();
+	void up();
+	void down();
+	void reset();
+}

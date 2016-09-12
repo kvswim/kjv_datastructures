@@ -1,0 +1,49 @@
+/*Kyle Verdeyen
+ * kverdey1@jhu.edu
+ * Data Structures
+ * FlexibleCounter.java
+ * Assignment 1
+ */
+public class FlexibleCounter implements ResetableCounter {
+    int value;
+    int step;
+    int value1;
+    int step1;
+
+    public FlexibleCounter(int v, int s) {
+        value = v;
+        step = s;
+        value1 = v;
+        step1 = v;
+    }
+    
+    public int value() {
+		
+        return this.value;
+    }
+
+    public void up() {
+        
+        this.value = this.value + this.step;
+    }
+
+    public void down() {
+		
+        this.value = this.value - this.step;
+    }
+
+    public void reset() {
+		
+        this.value = value1;
+        this.step = step1;
+    }
+
+    /**
+	 * @param args
+	 */
+    public static void main(String[] args) {
+    
+
+    }
+
+}

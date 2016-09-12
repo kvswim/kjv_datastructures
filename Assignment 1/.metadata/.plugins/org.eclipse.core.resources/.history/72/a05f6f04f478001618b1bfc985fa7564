@@ -1,0 +1,4 @@
+
+public interface ResetableCounter extends Counter {
+
+}

@@ -1,0 +1,32 @@
+
+public class FlexibleCounter implements ResetableCounter {
+	int value, step;
+	public int value() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void up() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void down() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void reset() {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

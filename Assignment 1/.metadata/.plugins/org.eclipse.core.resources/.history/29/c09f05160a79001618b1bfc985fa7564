@@ -1,0 +1,17 @@
+adt UglyArray
+	uses Any, Integer
+	defines UglyArray<T: Any>
+operations
+	new: Any -> UglyArray<>
+	get: UglyArray<T> x Any -> T
+	put: UglyArray<T> x Any x T -> UglyArray<T>
+	length: UglyArray<> -> null
+axioms
+	get
+	get
+	length
+	length
+preconditions
+	new(n,t)
+	get(a, i)
+	put(a,i,t):

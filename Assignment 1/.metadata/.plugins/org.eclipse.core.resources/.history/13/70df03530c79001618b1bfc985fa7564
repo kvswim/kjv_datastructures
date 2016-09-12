@@ -1,0 +1,37 @@
+/*Kyle Verdeyen
+ * kverdey1@jhu.edu
+ * Data Structures
+ * SquareCounter.java
+ * Assignment 1
+ */
+public class SquareCounter implements ResetableCounter {
+    int value = 2;
+    public int value() {
+		// TODO Auto-generated method stub
+        return this.value;
+    }
+
+    public void up() {
+		// TODO Auto-generated method stub
+        this.value = (int)(Math.pow(this.value, 2));
+    }
+
+    public void down() {
+		// TODO Auto-generated method stub
+        this.value = (int)(Math.sqrt(this.value));
+    }
+
+    public void reset() {
+		// TODO Auto-generated method stub
+        this.value = 2;
+    }
+
+	/**
+	 * @param args
+	 */
+    public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+    }
+
+}
