@@ -3,22 +3,27 @@
  * Data Structures
  * Readme
  * Assignment 1
+ *
+ * USING 1 LATE DAY
  */
- Problem 3:
+Problem 3:
 adt UglyArray
-	uses Any, Integer
-	defines UglyArray<T: Any>
-operations
-	new: Any -> UglyArray<>
-	get: UglyArray<T> x Any -> T
-	put: UglyArray<T> x Any x T -> UglyArray<T>
-	length: UglyArray<> -> null
-axioms
-	get
-	get
-	length
-	length
-preconditions
-	new(n,t)
-	get(a, i)
-	put(a,i,t):
+ uses Any, Boolean, Integer
+ defines Array<T: Any>
+ operations
+    new: Integer -/-> Array<T>
+    get: Array<T> x Integer -/-> T
+    put: Array<T> x Integer x T -/-> Array<T>
+    valid: Array<T> x Integer -/-> Boolean
+    length: Array<T> ---> Integer
+ preconditions
+    new(n): 0 < n
+    get(a, i): (0 <= i < length(a)) and valid (a,i)
+    put(a, i, t): 0<= i < length(a)
+    valid(a, i): 0 <= i < length(a)
+ axioms
+    valid(new(n), i) = false
+    valid(put(a, i, t), j) = (if i = j then true else valid(a, j))
+    get(put(a, i, t), j) = (if i=j then t else get(a,j))
+    length(new(n)) = n
+    length(put(a, i, t)) = length(a)
