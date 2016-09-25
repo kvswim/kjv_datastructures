@@ -1,0 +1,144 @@
+import java.util.Iterator;
+
+//import ListArray.Node;
+
+
+
+public class SparseArray<T> implements Array<T> {
+
+    private static class Node<T> {
+        int position;
+        T data;
+        Node<T> next;
+    }
+
+    // The not-so-obvious representation of our abstract Array: A linked list
+    // with "length" nodes instead of an array of "length" slots. We also keep
+    // an explicit length so we don't have to re-compute it every time.
+    private Node<T> first; // the front of the list, null for empty list
+    private int length;
+    private T original;
+    private int splength;
+    // An iterator to traverse the array from front to back. Note that we use
+    // an inner class here (not a nested class) so we can access the outer
+    // object's "this" reference. If we didn't do that, we'd have to pass the
+    // outer object (or the first node) to the iterator in its constructor.
+    private class SparseArrayIterator implements Iterator<T> {
+        // Current position in the linked list.
+        Node<T> current;
+
+        SparseArrayIterator() {
+            this.current = SparseArray.this.first;
+        }
+
+        @Override
+        public T next() {
+            T t = this.current.data;
+            this.current = this.current.next;
+            return t;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return this.current != null;
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    /**
+        Constructs a new SparseArray.
+
+        @param n Length of array, must be n &gt; 0.
+        @param t Default value to store in each slot.
+        @throws LengthException if n &le; 0.
+    */
+    public SparseArray(int n, T t) throws LengthException {
+        if (n <= 0) {
+            throw new LengthException();
+        }
+        original = t;
+        // Initialize all positions as we promise in the specification.
+        // Unlike in SimpleArray we cannot avoid the initialization even
+        // if t == null since the nodes still have to be created. On the
+        // upside we don't need a cast anywhere.
+
+        // Remember the length!
+        this.length = n;
+    }
+
+    // Insert a node at the beginning of the linked list.
+    private void prepend(Node<T> t) {
+        Node<T> n = new Node<T>();
+        n.data = t.data;
+        n.position = t.position;
+        n.next = this.first;
+        this.first = n;
+        splength++;
+    }
+
+    // Find the node for a given index. We enforce the precondition on index
+    // here so we don't have to duplicate the check in get() and put() below.
+    private Node<T> find(int index) throws IndexException {
+        if (index < 0 || index >= this.length) {
+            throw new IndexException();
+        }
+
+        /*Node<T> n = this.first;
+        int i = 0;
+        while (n != null && i < index) {
+            n = n.next;
+            i = i + 1;
+        }*/
+        if(this.splength == 0){return null; }
+        else {
+        Node <T> n = this.first;
+        for (int x = 0; x < this.splength; x++)
+        {
+            if(n.position == index){
+                return n;
+            }
+            n = n.next;
+        }
+        return null; }
+    }
+    @Override
+    public T get(int i) throws IndexException {
+        Node<T> n = this.find(i);
+        if(n != null) {
+            return n.data;
+        }
+        else { 
+            return original;
+        }
+    }
+
+    @Override
+    public void put(int i, T t) throws IndexException {
+        Node<T> n = this.find(i);
+        if(n != null) {
+            n.data = t;
+            n.position = i;
+        }
+        else {
+            Node<T> newnode = new Node<T>();
+            newnode.data = t;
+            newnode.position = i;
+            prepend(newnode);
+        }
+    }
+
+    @Override
+    public int length() {
+        return this.length;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new SparseArrayIterator();
+    }
+    
+}

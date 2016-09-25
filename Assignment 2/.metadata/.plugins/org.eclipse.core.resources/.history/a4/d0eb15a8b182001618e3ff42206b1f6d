@@ -1,0 +1,30 @@
+
+public class StatableArray implements Statable {
+
+    @Override
+    public void resetStatistics() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public int numberOfReads() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public int numberOfWrites() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+
+    }
+
+}

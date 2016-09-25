@@ -1,0 +1,38 @@
+
+public final class BubbleSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+
+    }
+    
+    private boolean greaterThan(T a, T b) {
+        return a.compareTo(b) > 0;
+    }
+    
+    private void swap(Array<T> a, int i, int j) {
+        T t = a.get(i);
+        a.put(i, a.get(j));
+        a.put(j, t);
+    }
+    
+    @Override
+    public void sort(Array<T> array) {
+        // TODO Auto-generated method stub
+        for(int i=0; i<array.length(); i++){ System.out.println("I got here");
+            if(greaterThan(array.get(i), array.get(i+1))) {
+               this.swap(array, i, i+1); 
+            }
+        }
+    }
+
+    @Override
+    public String name() {
+        // TODO Auto-generated method stub
+        return "BubbleSort";
+    }
+
+}

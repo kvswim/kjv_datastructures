@@ -1,0 +1,31 @@
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+public class InsertionSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void sort(Array<T> array) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public String name() {
+        // TODO Auto-generated method stub
+        return "InsertionSort";
+    }
+
+}

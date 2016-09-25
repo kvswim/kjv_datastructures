@@ -1,0 +1,38 @@
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+//Junit tester for StatableArray
+public class StatableArrayTest {
+    static StatableArray testarray;
+
+    @Before
+    public void setUp() throws Exception {
+        testarray = new StatableArray(5, "Et es verking!");
+    }
+
+    @Test
+    public void testNumberOfReads() {
+        testarray.length();
+        testarray.get(1);
+        testarray.get(2);
+        testarray.get(3);
+        assertEquals(4, testarray.numberOfReads());
+    }
+
+    @Test
+    public void testNumberOfWrites() {
+        testarray.put(4, "Slot changed");
+        testarray.put(3, "slot changed");
+        assertEquals(2, testarray.numberOfWrites());
+    }
+
+    @Test
+    public void testResetStatistics() {
+        testarray.resetStatistics();
+        assertEquals(0, testarray.numberOfWrites());
+        assertEquals(0, testarray.numberOfReads());
+    }
+
+}

@@ -1,0 +1,24 @@
+Kyle Verdeyen
+kverdey1@jhu.edu
+Readme Assignment 2
+Problem 2: Flexible Arrays ADT
+ uses Any, Boolean, Integer
+ defines Array<T: Any>
+ operations
+    new: Integer x Integer -/-> Array<T>
+    get: Array<T> x Integer -/-> T
+    put: Array<T> x Integer x T -/-> Array<T> 
+    valid: Array<T> x Integer -/-> Boolean
+    lower: Array<T> -/-> Integer
+    upper: Array<T> -/-> Integer
+ preconditions
+    new(m, n): m<=n //where m is lower bound, n is upper bound
+    get(a, i): valid(a, i)
+    put(a, i, t): valid(a,i) 
+    valid(a, i): lower(a) <= i <= upper(a)
+ axioms
+    valid(new(n, m), i) = false
+    valid(put(a, i, t), j) = (if i = j then true else valid(a, j))
+    get(put(a, i, t,), j) = (if i = j then true else valid(a,j))
+    lower()<=upper()
+    lower() - upper() = 1 if lower()==upper()

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="net.sf.eclipsecs.core.projectconfig.LocalCheckConfigurationWorkingSet">
+		<item value="0" key="sortColumn"/>
+		<item value="1" key="sortDirection"/>
+		<item value="291" key="colWidth2"/>
+		<item value="-1" key="selectedRow"/>
+		<item value="390" key="colWidth0"/>
+		<item value="292" key="colWidth1"/>
+	</section>
+	<section name="net.sf.eclipsecs.ui.config.ResolvablePropertiesDialog">
+		<item value="0" key="sortColumn"/>
+		<item value="1" key="sortDirection"/>
+		<item value="false" key="maximized"/>
+		<item value="650" key="width"/>
+		<item value="853" key="x"/>
+		<item value="128" key="y"/>
+		<item value="-1" key="selectedRow"/>
+		<item value="282" key="colWidth0"/>
+		<item value="false" key="minimized"/>
+		<item value="282" key="colWidth1"/>
+		<item value="500" key="height"/>
+	</section>
+</section>

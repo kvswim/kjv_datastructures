@@ -1,0 +1,147 @@
+import java.util.Iterator;
+
+//import ListArray.Node;
+
+
+/**
+Sparsearray class.
+ @param <T> any type of data
+*/
+public class SparseArray<T> implements Array<T> {
+
+    private static class Node<T> {
+        int position;
+        T data;
+        Node<T> next;
+    }
+
+    private Node<T> first;
+    private int length;
+    private T original;
+    private int splength;
+
+    private class SparseArrayIterator implements Iterator<T> {
+        Node<T> current;
+
+        SparseArrayIterator() {
+            this.current = SparseArray.this.first;
+        }
+
+        @Override
+        public T next() {
+            T t = this.current.data;
+            this.current = this.current.next;
+            return t;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return this.current != null;
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    /**
+        Constructs a new SparseArray.
+
+        @param n Length of array, must be n >= 0.
+        @param t Default value to store in each slot.
+        @throws LengthException if n <= 0.
+    */
+    public SparseArray(int n, T t) throws LengthException {
+        if (n <= 0) {
+            throw new LengthException();
+        }
+        original = t;
+        this.length = n;
+    }
+    /**
+  Inserts new node
+*/
+
+    private void prepend(Node<T> t) {
+        Node<T> n = new Node<T>();
+        n.data = t.data;
+        n.position = t.position;
+        n.next = this.first;
+        this.first = n;
+        splength++;
+    }
+    /**
+    Finds whether a node exists in the array based on position
+
+    @param index the index being searched for
+    @throws LengthException if n &le; 0.
+    @return Node if found, null otherwise
+*/
+    private Node<T> find(int index) throws IndexException {
+        if (index < 0 || index >= this.length) {
+            throw new IndexException();
+        }
+        if (this.splength == 0) {
+            return null;
+        } else {
+            Node<T> n = this.first;
+            for (int x = 0; x < this.splength; x++) {
+                if (n.position == index) {
+                    return n;
+                }
+                n = n.next;
+            }
+            return null;
+        }
+    }
+/**
+    Gets data from node
+
+    @param i index/position of node.
+    @throws IndexException
+    @return node data, or original data if not found
+*/
+    public T get(int i) {
+        Node<T> n = this.find(i);
+        if (n != null) {
+            return n.data;
+        } else {
+            return original;
+        }
+    }
+/**
+    Checks whether data has been modified in node and adds if not found
+
+    @param i position/index of array
+    @param t Value to store in slot.
+*/
+    public void put(int i, T t) {
+        Node<T> n = this.find(i);
+        if (n != null) {
+            n.data = t;
+            n.position = i;
+        } else {
+            Node<T> newnode = new Node<T>();
+            newnode.data = t;
+            newnode.position = i;
+            prepend(newnode);
+        }
+    }
+    /**
+    Constructs a new ListArray.
+    @return length of original array
+*/
+
+    public int length() {
+        return this.length;
+    }
+    /**
+    Constructs a new ListArray.
+    @return new iterator
+*/
+
+    public Iterator<T> iterator() {
+        return new SparseArrayIterator();
+    }
+}

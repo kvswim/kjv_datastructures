@@ -1,0 +1,49 @@
+Kyle Verdeyen
+Data Structures
+Assignment 3
+kverdey1@jhu.edu
+
+Problem 2
+See results.dat
+Null Sort: 
+	Unique: Dummy sorting algorithm, essentially only takes time to assign array.
+	Why it's better: It's not, doesn't actually sort anything.
+Gnome Sort:
+	Unique: Traverses array one by one performing only swaps to order. Similar to both Insertion and Bubble sort. ~O(n^2)
+	Why it's better: Simple, doesn't require division of array.
+Selection Sort:
+	Unique: Left side of array is "sorted", right is "unsorted". Smallest from right side put into left, moving array boundary as necessary. O(n^2).
+	Why it's better: Unlike insertionsort, the right side selection is made in order. Less swaps necessary. Has a close time regardless of data order.
+Bubble Sort:
+	Unique: Each item is compared to adjacent node and swapped if necessary. O(n^2)
+	Why it's better: Similar to gnomesort, doesn't require subdivision of array (nested loop)
+Insertion Sort:
+	Unique: Lower part of array is maintained as sorted. Traverses array in order and items are moved in order to lower part of array in order. O(n^2)
+	Why it's better: Unlike selectionsort, left side is reordered at every insertion from the right side.
+Does actual running time correspond to the asymptotic complexity as you would expect?
+	No, there is some overhead involved in the code so real-world is different from O-time. Also the computer could have differing runs based on
+	background processes.
+What explains the practical differences between these algorithms?
+	Gnome and BubbleSort use comparisons to near nodes, Selection and Insertion subdivide the array
+	Gnome vs Bubblesort: Gnome traverses one by one, Bubble compares to adjacent.
+	Selection vs Insertion: Selection moves from unsorted to sorted by choosing the next in order from unsorted. Insertion keeps "sorted" sorted
+							and just chooses next node from unsorted. 
+Does it matter what kind of data (random, already sorted in ascending order, sorted in descending order) you are sorting?
+	GnomeSort and BubbleSort and Insertion do better if the data is ~close to ascending order.
+	GnomeSort and Bubble do worse if the data is in descending order.
+
+
+Problem 3:
+public static void selectionSort(int[] a) {
+    for (int i = 0; i < a.length - 1; i++) {
+        int min = i; 
+        for (int j = i + 1; j < a.length; j++) {
+            if (a[j] < a[min]) {
+                min = j;
+            }
+        }
+        int t = a[i]; a[i] = a[min]; a[min] = t;
+    }
+}
+A(n)=line 2(n)*(line 4(n)+line 6(n))+line 4(n)+line 9(3n)=2n^2+4n
+C(n)=line 2(n)*(line 4(n)+line 6(n))=2n^2

@@ -1,0 +1,52 @@
+/**.
+ * Kyle Verdeyen
+ * kverdey1@jhu.edu
+ * Assignment 3
+ * InsertionSort.java
+ *
+ *
+ * @param <T>
+ */
+public class InsertionSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+
+    }
+    
+    private boolean less(T a, T b) {
+        return a.compareTo(b) < 0;
+    }
+    
+    private void swap(Array<T> a, int i, int j) {
+        T t = a.get(i);
+        a.put(i, a.get(j));
+        a.put(j, t);
+    }
+
+    @Override
+    public void sort(Array<T> array) {
+        int length = array.length();
+        int pointer;
+        T temp;
+        for (int i = 1; i < length; i++) {
+            temp = array.get(i);
+            pointer = i;
+          while(pointer > 0 && !less(array.get(pointer - 1), temp)) {
+              swap(array, pointer, pointer - 1);
+              pointer--;
+          }
+            array.put(pointer, temp);
+        }
+    }
+
+    @Override
+    public String name() {
+        // TODO Auto-generated method stub
+        return "InsertionSort";
+    }
+
+}

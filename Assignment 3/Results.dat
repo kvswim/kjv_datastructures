@@ -1,0 +1,242 @@
+Random data: 
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    1,000        0            0            0.000005    
+Gnome Sort           true     1,000        2,003,283    500,072      0.036888    
+Selection Sort       true     1,000        1,502,483    1,984        0.028661    
+BubbleSort           true     1,000        2,388,183    500,072      0.046683    
+InsertionSort        true     1,000        752,105      501,071      0.039880    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    2,000        0            0            0.000008    
+Gnome Sort           true     2,000        8,167,459    2,040,366    0.118114    
+Selection Sort       true     2,000        6,004,981    3,982        0.076662    
+BubbleSort           true     2,000        9,828,471    2,040,366    0.204289    
+InsertionSort        true     2,000        3,064,546    2,042,365    0.072360    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    3,000        0            0            0.000005    
+Gnome Sort           true     3,000        18,247,899   4,559,726    0.117776    
+Selection Sort       true     3,000        13,507,489   5,990        0.056657    
+BubbleSort           true     3,000        22,139,865   4,559,726    0.246974    
+InsertionSort        true     3,000        6,845,586    4,562,725    0.056536    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    4,000        0            0            0.000006    
+Gnome Sort           true     4,000        32,195,307   8,045,828    0.189203    
+Selection Sort       true     4,000        24,009,991   7,992        0.115646    
+BubbleSort           true     4,000        38,846,127   8,045,828    0.520055    
+InsertionSort        true     4,000        12,076,739   8,049,827    0.079231    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    5,000        0            0            0.000008    
+Gnome Sort           true     5,000        49,970,403   12,488,852   0.249529    
+Selection Sort       true     5,000        37,512,479   9,980        0.133128    
+BubbleSort           true     5,000        61,649,019   12,488,852   0.650790    
+InsertionSort        true     5,000        18,743,275   12,493,851   0.118488    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    6,000        0            0            0.000007    
+Gnome Sort           true     6,000        71,585,499   17,891,876   0.349669    
+Selection Sort       true     6,000        54,014,975   11,976       0.183819    
+BubbleSort           true     6,000        88,500,107   17,891,876   1.263635    
+InsertionSort        true     6,000        26,849,811   17,897,875   0.209402    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    7,000        0            0            0.000005    
+Gnome Sort           true     7,000        98,144,883   24,530,972   0.492993    
+Selection Sort       true     7,000        73,517,491   13,992       0.327149    
+BubbleSort           true     7,000        121,663,095  24,530,972   1.566750    
+InsertionSort        true     7,000        36,810,455   24,537,971   0.209371    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    8,000        0            0            0.000006    
+Gnome Sort           true     8,000        128,452,011  32,107,004   0.566468    
+Selection Sort       true     8,000        96,019,975   15,976       0.307042    
+BubbleSort           true     8,000        158,891,155  32,107,004   1.887275    
+InsertionSort        true     8,000        48,176,503   32,115,003   0.234381    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    9,000        0            0            0.000005    
+Gnome Sort           true     9,000        161,625,643  40,399,662   0.737781    
+Selection Sort       true     9,000        121,522,481  17,982       0.418634    
+BubbleSort           true     9,000        197,846,167  40,399,662   2.269108    
+InsertionSort        true     9,000        60,617,490   40,408,661   0.531556    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    10,000       0            0            0.000004    
+Gnome Sort           true     10,000       199,786,595  49,939,150   0.870395    
+Selection Sort       true     10,000       150,024,981  19,982       0.481374    
+BubbleSort           true     10,000       247,359,407  49,939,150   2.625250    
+InsertionSort        true     10,000       74,928,722   49,949,149   0.762529    
+
+Ascending Data:
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    1,000        0            0            0.000010    
+Gnome Sort           true     1,000        355,079      88,020       0.027092    
+Selection Sort       true     1,000        1,502,471    1,972        0.037702    
+BubbleSort           true     1,000        283,825      88,020       0.015933    
+InsertionSort        true     1,000        134,029      89,019       0.012497    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    2,000        0            0            0.000004    
+Gnome Sort           true     2,000        7,894,079    1,972,020    0.061835    
+Selection Sort       true     2,000        6,004,975    3,976        0.049896    
+BubbleSort           true     2,000        5,958,027    1,972,020    0.077288    
+InsertionSort        true     2,000        2,962,029    1,974,019    0.059037    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    3,000        0            0            0.000005    
+Gnome Sort           true     3,000        14,545,079   3,634,020    0.095742    
+Selection Sort       true     3,000        13,507,483   5,984        0.071122    
+BubbleSort           true     3,000        9,614,027    3,634,020    0.078392    
+InsertionSort        true     3,000        5,457,029    3,637,019    0.054739    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    4,000        0            0            0.000006    
+Gnome Sort           true     4,000        20,308,079   5,074,020    0.088682    
+Selection Sort       true     4,000        24,009,979   7,980        0.093952    
+BubbleSort           true     4,000        13,048,027   5,074,020    0.088100    
+InsertionSort        true     4,000        7,619,029    5,078,019    0.064729    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    5,000        0            0            0.000004    
+Gnome Sort           true     5,000        25,183,079   6,292,020    0.123274    
+Selection Sort       true     5,000        37,512,487   9,988        0.112467    
+BubbleSort           true     5,000        16,260,027   6,292,020    0.105135    
+InsertionSort        true     5,000        9,448,029    6,297,019    0.063326    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    6,000        0            0            0.000006    
+Gnome Sort           true     6,000        29,170,079   7,288,020    0.127321    
+Selection Sort       true     6,000        54,014,975   11,976       0.183137    
+BubbleSort           true     6,000        19,250,027   7,288,020    0.110910    
+InsertionSort        true     6,000        10,944,029   7,294,019    0.071609    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    7,000        0            0            0.000006    
+Gnome Sort           true     7,000        32,269,079   8,062,020    0.153972    
+Selection Sort       true     7,000        73,517,487   13,988       0.276235    
+BubbleSort           true     7,000        22,018,027   8,062,020    0.145638    
+InsertionSort        true     7,000        12,107,029   8,069,019    0.085727    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    8,000        0            0            0.000009    
+Gnome Sort           true     8,000        34,480,079   8,614,020    0.203027    
+Selection Sort       true     8,000        96,019,975   15,976       0.386506    
+BubbleSort           true     8,000        24,564,027   8,614,020    0.219093    
+InsertionSort        true     8,000        12,937,029   8,622,019    0.131653    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    9,000        0            0            0.000005    
+Gnome Sort           true     9,000        35,803,079   8,944,020    0.168274    
+Selection Sort       true     9,000        121,522,471  17,972       0.386789    
+BubbleSort           true     9,000        26,888,027   8,944,020    0.179682    
+InsertionSort        true     9,000        13,434,029   8,953,019    0.074540    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    10,000       0            0            0.000005    
+Gnome Sort           true     10,000       36,238,079   9,052,020    0.165671    
+Selection Sort       true     10,000       150,024,959  19,960       0.388820    
+BubbleSort           true     10,000       28,990,027   9,052,020    0.172137    
+InsertionSort        true     10,000       13,598,029   9,062,019    0.082928    
+
+Descending data:
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    1,000        0            0            0.000005    
+Gnome Sort           true     1,000        3,997,001    999,000      0.049246    
+Selection Sort       true     1,000        1,501,499    1,000        0.024702    
+BubbleSort           true     1,000        2,995,003    999,000      0.046119    
+InsertionSort        true     1,000        1,499,500    999,999      0.027727    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    2,000        0            0            0.000005    
+Gnome Sort           true     2,000        15,994,001   3,998,000    0.118541    
+Selection Sort       true     2,000        6,002,999    2,000        0.052548    
+BubbleSort           true     2,000        11,990,003   3,998,000    0.125154    
+InsertionSort        true     2,000        5,999,000    3,999,999    0.054299    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    3,000        0            0            0.000004    
+Gnome Sort           true     3,000        35,991,001   8,997,000    0.170453    
+Selection Sort       true     3,000        13,504,499   3,000        0.066105    
+BubbleSort           true     3,000        26,985,003   8,997,000    0.164958    
+InsertionSort        true     3,000        13,498,500   8,999,999    0.077440    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    4,000        0            0            0.000006    
+Gnome Sort           true     4,000        63,988,001   15,996,000   0.243450    
+Selection Sort       true     4,000        24,005,999   4,000        0.105119    
+BubbleSort           true     4,000        47,980,003   15,996,000   0.458914    
+InsertionSort        true     4,000        23,998,000   15,999,999   0.193053    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    5,000        0            0            0.000009    
+Gnome Sort           true     5,000        99,985,001   24,995,000   0.441107    
+Selection Sort       true     5,000        37,507,499   5,000        0.120961    
+BubbleSort           true     5,000        74,975,003   24,995,000   0.366122    
+InsertionSort        true     5,000        37,497,500   24,999,999   0.147967    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    6,000        0            0            0.000008    
+Gnome Sort           true     6,000        143,982,001  35,994,000   0.495677    
+Selection Sort       true     6,000        54,008,999   6,000        0.171664    
+BubbleSort           true     6,000        107,970,003  35,994,000   0.561176    
+InsertionSort        true     6,000        53,997,000   35,999,999   0.219628    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    7,000        0            0            0.000005    
+Gnome Sort           true     7,000        195,979,001  48,993,000   0.662448    
+Selection Sort       true     7,000        73,510,499   7,000        0.243165    
+BubbleSort           true     7,000        146,965,003  48,993,000   1.163237    
+InsertionSort        true     7,000        73,496,500   48,999,999   0.388325    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    8,000        0            0            0.000007    
+Gnome Sort           true     8,000        255,976,001  63,992,000   0.816808    
+Selection Sort       true     8,000        96,011,999   8,000        0.291611    
+BubbleSort           true     8,000        191,960,003  63,992,000   0.911064    
+InsertionSort        true     8,000        95,996,000   63,999,999   0.323495    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    9,000        0            0            0.000006    
+Gnome Sort           true     9,000        323,973,001  80,991,000   1.125945    
+Selection Sort       true     9,000        121,513,499  9,000        0.641057    
+BubbleSort           true     9,000        242,955,003  80,991,000   1.393656    
+InsertionSort        true     9,000        121,495,500  80,999,999   0.406045    
+
+Algorithm            Sorted?  Size         Reads        Writes       Seconds     
+
+Null Sort            false    10,000       0            0            0.000007    
+Gnome Sort           true     10,000       363,763,913  90,937,980   1.133974    
+Selection Sort       true     10,000       150,024,971  19,972       0.445612    
+BubbleSort           true     10,000       290,897,983  90,937,980   1.653189    
+InsertionSort        true     10,000       136,417,966  90,947,979   0.622522 

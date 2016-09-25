@@ -1,0 +1,104 @@
+import java.util.Iterator;
+
+//import ListArray.Node;
+
+
+
+public class SparseArray<T> implements Array<T> {
+
+    private static class Node<T> {
+        int position;
+        T data;
+        Node<T> next;
+    }
+    private int length;
+    private T original;
+    private int splength;
+    
+    private class SparseArrayIterator implements Iterator<T> {
+        // Current position in the linked list.
+        Node<T> current;
+
+        SparseArrayIterator() {
+            this.current = SparseArray.this.first;
+        }
+
+        @Override
+        public T next() {
+            T t = this.current.data;
+            this.current = this.current.next;
+            return t;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return this.current != null;
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    public SparseArray(int n, T t) throws LengthException {
+        if (n <= 0) {
+            throw new LengthException();
+        }
+        original = t;
+        this.length = n;
+    }
+
+    // Insert a node at the beginning of the linked list.
+    private void prepend(Node<T> t) {
+        Node<T> n = new Node<T>();
+        n.data = t.data;
+        n.position = t.position;
+        n.next = this.first;
+        this.first = n;
+        splength++;
+    }
+    private Node<T> find(int index) throws IndexException {
+        if (index < 0 || index >= this.length) {
+            throw new IndexException();
+        }
+        if (this.splength == 0) {
+            return null;
+        } else {
+            Node<T> n = this.first;
+            for (int x = 0; x < this.splength; x++) {
+                if (n.position == index) {
+                    return n;
+                }
+                n = n.next;
+            }
+            return null;
+        }
+    }
+    public T get(int i) throws IndexException {
+        Node<T> n = this.find(i);
+        if (n != null) {
+            return n.data;
+        } else {
+            return original;
+        }
+    }
+    public void put(int i, T t) throws IndexException {
+        Node<T> n = this.find(i);
+        if (n != null) {
+            n.data = t;
+            n.position = i;
+        } else {
+            Node<T> newnode = new Node<T>();
+            newnode.data = t;
+            newnode.position = i;
+            prepend(newnode);
+        }
+    }
+    public int length() {
+        return this.length;
+    }
+    public Iterator<T> iterator() {
+        return new SparseArrayIterator();
+    }
+}
