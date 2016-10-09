@@ -1,0 +1,125 @@
+public class ArrayDequeue<T> implements Dequeue<T> {
+
+    protected SimpleArray<T> deque;
+    private int front;
+    private int back;
+    private int size;
+    private int capacity = 1;
+
+    public ArrayDequeue() {
+        // TODO Auto-generated constructor stub
+        deque = new SimpleArray(capacity, null);
+        front = 1;
+        back = 0;
+        size = 1;
+        this.capacity = capacity - 1;
+    }
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        ArrayDequeue a = new ArrayDequeue();
+        a.insertFront("Fuck!");
+        System.out.println(a.front());
+    }
+
+    @Override
+    public boolean empty() {
+        // TODO Auto-generated method stub
+        return size == 0;
+    }
+
+    @Override
+    public int length() {
+        // TODO Auto-generated method stub
+        return deque.length();
+    }
+
+    @Override
+    public T front() throws EmptyException {
+        // TODO Auto-generated method stub
+        if(empty()) { 
+            throw new EmptyException();
+        }
+        return deque.get((front - 1) % capacity);
+    }
+
+    @Override
+    public T back() throws EmptyException {
+        // TODO Auto-generated method stub
+        if(empty()) { 
+            throw new EmptyException();
+        }
+        return deque.get((front + 1) % capacity);
+    }
+
+    @Override
+    public void insertFront(T t) {
+        // TODO Auto-generated method stub
+        if(size == capacity) {
+            resize();
+        }
+        try {
+            deque.put(front, t);
+        }
+        catch (Exception e) {
+            resize();
+        }
+        front = (front + 1) % capacity;
+        size++;
+    }
+
+    @Override
+    public void insertBack(T t) {
+        // TODO Auto-generated method stub
+        if(size == capacity) {
+            resize();
+        }
+        deque.put(back, t);
+        back = (back-1) % capacity;
+        size++;
+    }
+
+    @Override
+    public void removeFront() throws EmptyException {
+        // TODO Auto-generated method stub
+        if(empty()) {
+            throw new EmptyException();
+        }
+        front = (front - 1) % capacity;
+        size--;
+    }
+
+    @Override
+    public void removeBack() throws EmptyException {
+        // TODO Auto-generated method stub
+        if(empty()) {
+            throw new EmptyException();
+        }
+        back = (back + 1) % capacity; 
+        size--;
+    }
+
+    public void resize() {
+        SimpleArray<T> temp;
+        temp = deque;
+        deque = new SimpleArray(capacity*2, null);
+        deque = temp;
+        capacity = capacity * 2;
+    }
+
+    public String toString() {
+        String s = "[";
+        for (int i = front; i <= back; i++) {
+            s += deque.get(i);
+            if(deque.get(i+1) != null) {
+                s += ",";
+            }
+        }
+        s += "]";
+        return s;
+    }
+
+}

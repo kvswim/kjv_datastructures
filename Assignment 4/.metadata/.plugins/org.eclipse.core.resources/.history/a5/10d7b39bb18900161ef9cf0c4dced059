@@ -1,0 +1,82 @@
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+
+public class TestArrayDequeue {
+
+    transient ArrayDequeue test;
+    @Before
+    public void setUp() throws Exception {
+       test = new ArrayDequeue();
+    }
+
+    @Test
+    public void testempty() {
+        test.insertFront(1);
+        test.removeFront();
+        assertEquals(true, test.empty());
+    }
+    @Test
+    public void testlength() {
+        for(int i=0; i < 20; i++) {
+        test.insertFront(i);
+        }
+        assertEquals(20, test.length());
+    }
+    @Test
+    public void testfront() {
+        test.insertFront(1);
+        test.insertFront(2);
+        assertEquals(2, test.front());
+
+    }
+    @Test
+    public void testback() {
+        for(int i=0; i < 20; i++) {
+            test.insertBack(i);
+        }
+        System.out.println(test.toString());
+        assertEquals(null, test.back());
+    }
+    @Test
+    public void testinsertFront() {
+        test.insertFront(123);
+        assertEquals(123, test.front());
+    }
+    @Test
+    public void testinsertBack() {
+        test.insertBack(20);
+        test.insertBack(22);
+        assertEquals(20, test.front());
+    }
+    @Test
+    public void testremoveFront() {
+        for(int i=0; i < 20; i++) {
+            test.insertBack(i);
+        }
+        test.removeFront();
+        assertEquals(1, test.front());
+    }
+    @Test
+    public void testremoveBack() {
+        test.insertFront(20);
+        test.insertFront(33);
+        test.insertBack(10);
+        test.removeBack();
+        assertEquals(null, test.back());
+    }
+    @Test
+    public void testResize() {
+       test.resize();
+       assertEquals(0, test.length());
+    }
+    @Test
+    public void testtoString() {
+        test.insertBack(1);
+        test.insertBack(2);
+        test.insertBack(3);
+        assertEquals("[1, 2, 3]", test.toString());
+    }
+}

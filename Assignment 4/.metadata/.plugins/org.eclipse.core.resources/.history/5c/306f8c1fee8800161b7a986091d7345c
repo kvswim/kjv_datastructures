@@ -1,0 +1,98 @@
+import java.util.Scanner;
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ * @param <T>
+ *
+ */
+public class Calc<T> extends ListStack<T> {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int input;
+		String in;
+		Stack stack = new ListStack<String>();
+		Scanner oScan = new Scanner(System.in);
+		whileloop: {
+		while(oScan.hasNext()) {
+			
+			in = oScan.next();
+			String[] parts = in.split(" ");
+			for(int x=0; x < parts.length; x++) {
+				if(parts[x].equals("!")) {
+					break whileloop;
+				}
+				else if(parts[x].matches("\\d+")) {
+					stack.push(parts[x]);
+				}
+				else if(parts[x].equals(".")) {
+					System.out.println(stack.top());
+					stack.pop();
+				}
+				else if(parts[x].equals("?")) {
+					System.out.println(stack.toString());
+				}
+				//could check for +-*/% but we need to differentiate
+				else if(parts[x].equals("+")) {
+					String temp1 = (String) stack.top();
+					int a = Integer.parseInt(temp1);
+					stack.pop();
+					String temp2 = (String) stack.top();
+					int b = Integer.parseInt(temp2);
+					stack.pop();
+					stack.push(a+b);
+				}
+				else if (parts[x].equals("-")) {
+					String temp1 = (String) stack.top();
+					int a = Integer.parseInt(temp1);
+					stack.pop();
+					String temp2 = (String) stack.top();
+					int b = Integer.parseInt(temp2);
+					stack.pop();
+					stack.push(a-b);
+				}
+				else if (parts[x].equals("*")) {
+					String temp1 = (String) stack.top();
+					int a = Integer.parseInt(temp1);
+					stack.pop();
+					String temp2 = (String) stack.top();
+					int b = Integer.parseInt(temp2);
+					stack.pop();
+					stack.push(a*b);
+				}
+				else if (parts[x].equals("/")) {
+					String temp1 = (String) stack.top();
+					int a = Integer.parseInt(temp1);
+					stack.pop();
+					String temp2 = (String) stack.top();
+					int b = Integer.parseInt(temp2);
+					stack.pop();
+					stack.push(a/b);
+				}
+				else if (parts[x].equals("%")) {
+					String temp1 = (String) stack.top();
+					int a = Integer.parseInt(temp1);
+					stack.pop();
+					String temp2 = (String) stack.top();
+					int b = Integer.parseInt(temp2);
+					stack.pop();
+					stack.push(a%b);
+				}
+				//and finally it's not anything we recognize...
+				else {
+					System.out.println("? Input error?");
+				}
+			} }
+			//System.out.println(in);
+		}
+	}
+
+}

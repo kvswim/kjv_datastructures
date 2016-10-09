@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="New_configuration" project="Assignment 5" tests="8" started="8" failures="0" errors="0" ignored="0">
+  <testsuite name="NodeListTest" time="0.004">
+    <testcase name="newListNoFront" classname="NodeListTest" time="0.003"/>
+    <testcase name="newListEmpty" classname="NodeListTest" time="0.0"/>
+    <testcase name="removeBackWorks" classname="NodeListTest" time="0.0"/>
+    <testcase name="insertBackWorks" classname="NodeListTest" time="0.0"/>
+    <testcase name="insertFrontWorks" classname="NodeListTest" time="0.0"/>
+    <testcase name="insertFrontBackConsistent" classname="NodeListTest" time="0.0"/>
+    <testcase name="removeFrontWorks" classname="NodeListTest" time="0.0"/>
+    <testcase name="newListNoBack" classname="NodeListTest" time="0.0"/>
+  </testsuite>
+</testrun>

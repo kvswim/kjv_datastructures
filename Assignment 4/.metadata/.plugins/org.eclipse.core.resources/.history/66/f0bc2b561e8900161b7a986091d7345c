@@ -1,0 +1,123 @@
+/**
+ * 
+ * @author Kyle Verdeyen
+ * Data Structures
+ * Assignment 4
+ * ArrayDeque.java
+ *
+ * @param <T> objects
+ */
+public class ArrayDequeue<T> implements Dequeue<T> {
+
+    private transient T[] deque;
+    private transient int front;
+    private transient int back;
+
+    public ArrayDequeue() {
+        // TODO Auto-generated constructor stub
+        deque = (T[]) new Object[1];
+    }
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public boolean empty() {
+        return front == back;
+    }
+
+    @Override
+    public int length() {
+        int len=0;
+        for(int i = 0; i < deque.length; i++) {
+            if(deque[i] != null) {
+                len++;
+            }
+        }
+        return len;
+    }
+
+    @Override
+    public T front() throws EmptyException {
+        if(empty()) throw new EmptyException();
+        return deque[front];
+    }
+
+    @Override
+    public T back() throws EmptyException {
+        if(empty()) throw new EmptyException();
+        return deque[back];
+    }
+
+    @Override
+    public void insertFront(T t) {
+//        System.out.print((front - 1) & (deque.length - 1));
+//        System.out.print(" ");
+        deque[front = ((front - 1 + deque.length) % deque.length)] = t;
+        //deque[front = (front - 1) & (deque.length - 1)] = t;
+        if(front == back) {
+            resize();
+        }
+    }
+
+    @Override
+    public void insertBack(T t) {
+        deque[back] = t; 
+        
+//        if(((back + 1 + deque.length) % deque.length) == back) {
+//            resize();
+//        }
+        if((back = (back + 1) & deque.length - 1) == back) {
+            resize();
+        }
+    }
+
+    @Override
+    public void removeFront() throws EmptyException {
+        if(empty()) throw new EmptyException();
+        else {int a = front; 
+        deque[a] = null;
+        front = (a + 1) & (deque.length - 1);}
+    }
+
+    @Override
+    public void removeBack() throws EmptyException {
+        if(empty()) throw new EmptyException();
+        else {int a = (back - 1) & (deque.length - 1);
+        deque[a] = null;
+        back = a;}
+    }
+
+    public void resize() {
+        assert front == back;
+        int a = front; 
+        int b = deque.length; 
+        int c = b - a;
+        int newcap = b << 1;
+        Object[] newone = new Object[newcap];
+        System.arraycopy(deque, a, newone, 0, c);
+        System.arraycopy(deque, 0, newone, c, a);
+        deque = (T[]) newone;
+        front = 0;
+        back = b;
+    }
+
+    public String toString() {
+        String s = "[";
+        for (int i = 0; i < deque.length; i++) {
+            if (deque[i] != null) {
+            s += deque[i] + ", ";
+            }
+
+        }
+        s = s.substring(0, s.length() - 2); //take out extra ", "
+        s += "]";
+        return s;
+    }
+
+}

@@ -1,0 +1,161 @@
+import java.util.Iterator;
+
+public class SentinelList<T> implements List<T> {
+    private static final class Node<T> implements Position<T> {
+        Node<T> next;
+        Node<T> prev;
+        T data;
+        List<T> owner;
+        @Override
+        public T get() {
+            return this.data;
+        }
+        @Override
+        public void put(T t) {
+            this.data = t;
+        }
+    }
+    private final class ListIterator implements Iterator<T> {
+
+
+        ListIterator(boolean f) {
+
+        }
+
+        @Override
+        public T next() {
+            return null;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return true;
+        }
+
+        @Override
+        public void remove() {
+
+        }
+    }
+
+    /**
+     * Create an empty list.
+     */
+    public SentinelList() {
+        Node<T> guardFirst = new Node<T>();
+        guardFirst.prev = null;
+        guardFirst.owner = this;
+        Node<T> guardLast = new Node<T> ();
+        guardLast.next = null;
+        guardLast.owner = this;
+    }
+
+    private Node<T> convert(Position<T> p) throws PositionException {
+        try {
+            Node<T> n = (Node<T>) p;
+            if (n.owner != this) {
+                throw new PositionException();
+            }
+            return n;
+        } catch (NullPointerException | ClassCastException e) {
+            throw new PositionException();
+        }
+    }
+
+    @Override
+    public boolean empty() {
+        return true;
+    }
+
+    @Override
+    public int length() {
+        return 0;
+    }
+
+    @Override
+    public boolean first(Position<T> p) {
+        return true;
+    }
+
+    @Override
+    public boolean last(Position<T> p) {
+        return true;
+    }
+
+    @Override
+    public Position<T> front() throws EmptyException {
+        return null;
+    }
+
+    @Override
+    public Position<T> back() throws EmptyException {
+        return null;
+    }
+
+    @Override
+    public Position<T> insertFront(T t) {
+        return null;
+    }
+
+    @Override
+    public Position<T> insertBack(T t) {
+        return null;
+    }
+
+    @Override
+    public void removeFront() throws EmptyException {
+
+    }
+
+    @Override
+    public void removeBack() throws EmptyException {
+
+    }
+
+    @Override
+    public Position<T> next(Position<T> p) throws PositionException {
+        return null;
+    }
+
+    @Override
+    public Position<T> previous(Position<T> p) throws PositionException {
+        return null;
+    }
+
+    @Override
+    public Position<T> insertBefore(Position<T> p, T t)
+    throws PositionException {
+        return null;
+    }
+
+    @Override
+    public Position<T> insertAfter(Position<T> p, T t)
+    throws PositionException {
+        return null;
+    }
+
+    @Override
+    public void remove(Position<T> p) throws PositionException {
+
+    }
+
+    @Override
+    public Iterator<T> forward() {
+        return null;
+    }
+
+    @Override
+    public Iterator<T> backward() {
+        return null;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return null;
+    }
+}

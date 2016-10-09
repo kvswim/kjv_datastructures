@@ -1,0 +1,105 @@
+public class ArrayDequeue<T> implements Dequeue<T> {
+
+    protected SimpleArray<T> deque;
+    private int front;
+    private int back;
+    private int size;
+    private int capacity;
+
+    public ArrayDequeue() {
+        // TODO Auto-generated constructor stub
+        deque = new SimpleArray(1, null);
+        front = 1;
+        back = 0;
+        size = 0;
+        this.capacity = capacity - 1;
+    }
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public boolean empty() {
+        // TODO Auto-generated method stub
+        return size == 0;
+    }
+
+    @Override
+    public int length() {
+        // TODO Auto-generated method stub
+        return deque.length();
+    }
+
+    @Override
+    public T front() throws EmptyException {
+        // TODO Auto-generated method stub
+        if(empty()) { 
+            throw new EmptyException();
+        }
+        return deque.get((front - 1) % capacity);
+    }
+
+    @Override
+    public T back() throws EmptyException {
+        // TODO Auto-generated method stub
+        if(empty()) { 
+            throw new EmptyException();
+        }
+        return deque.get((front + 1) % capacity);
+    }
+
+    @Override
+    public void insertFront(T t) {
+        // TODO Auto-generated method stub
+        if(size == capacity) {
+            resize();
+        }
+        deque.put(front, t);
+        front = (front + 1) % capacity;
+        size++;
+    }
+
+    @Override
+    public void insertBack(T t) {
+        // TODO Auto-generated method stub
+        if(size == capacity) {
+            resize();
+        }
+        deque.put(back, t);
+        back = (back-1) % capacity;
+        size++;
+    }
+
+    @Override
+    public void removeFront() throws EmptyException {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void removeBack() throws EmptyException {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void resize() {
+        SimpleArray<T> temp;
+        temp = deque;
+        deque = new SimpleArray(capacity*2, null);
+        deque = temp;
+        capacity = capacity * 2;
+    }
+
+    public String toString() {
+        String s = "[";
+        for (int i = 0; i < deque.size(); i++) {
+
+        }
+    }
+
+}

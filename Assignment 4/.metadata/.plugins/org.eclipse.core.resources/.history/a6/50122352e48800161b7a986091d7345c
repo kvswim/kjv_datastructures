@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ * @param <T>
+ *
+ */
+public class Calc<T> extends ListStack<T> {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*Stack oStack = new ListStack<String>();
+		oStack.push("Shitlord.");
+		System.out.println(oStack.toString());*/
+		int input;
+		String in;
+		Stack stack = new ListStack<Integer>();
+		Scanner oScan = new Scanner(System.in);
+		while(oScan.next()!="!") {
+			in = oScan.next();
+			if(in.matches("/([!.?])/")) {
+				System.out.println("It was one of the !.? things");
+			}
+			else if (in.matches("/([0-9])/")) {
+				input = Integer.parseInt(in);
+				stack.push(input);
+			}
+			else {
+				System.out.println("?Error in input?");
+			}
+		}
+	}
+
+}

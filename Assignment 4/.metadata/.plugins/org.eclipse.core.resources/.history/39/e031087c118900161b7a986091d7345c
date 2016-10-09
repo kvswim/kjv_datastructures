@@ -1,0 +1,60 @@
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+
+public class TestArrayDequeue {
+
+    transient ArrayDequeue test;
+    @Before
+    public void setUp() throws Exception {
+       test = new ArrayDequeue();
+    }
+
+    @Test
+    public void testempty() {
+        test.insertFront(1);
+        test.removeFront();
+        assertEquals(true, test.empty());
+    }
+    @Test
+    public void testlength() {
+        for(int i=0; i < 20; i++) {
+        test.insertBack(i);
+        }
+        assertEquals(20, test.length());
+    }
+    @Test
+    public void testfront() {
+        assertEquals(0, test.front());
+    }
+    @Test
+    public void testback() {
+        fail("Not yet implemented");
+    }
+    @Test
+    public void testinsertFront() {
+        fail("Not yet implemented");
+    }
+    @Test
+    public void testinsertBack() {
+        fail("Not yet implemented");
+    }
+    @Test
+    public void testremoveFront() {
+        fail("Not yet implemented");
+    }
+    @Test
+    public void testremoveBack() {
+        fail("Not yet implemented");
+    }
+    @Test
+    public void testResize() {
+        fail("Not yet implemented");
+    }
+    @Test
+    public void testtoString() {
+        fail("Not yet implemented");
+    }
+}

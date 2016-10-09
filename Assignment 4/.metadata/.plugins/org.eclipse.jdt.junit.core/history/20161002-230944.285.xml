@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestArrayDequeue" project="Assignment 4" tests="10" started="10" failures="0" errors="0" ignored="0">
+  <testsuite name="TestArrayDequeue" time="0.009">
+    <testcase name="testlength" classname="TestArrayDequeue" time="0.0"/>
+    <testcase name="testinsertBack" classname="TestArrayDequeue" time="0.0"/>
+    <testcase name="testremoveBack" classname="TestArrayDequeue" time="0.0"/>
+    <testcase name="testempty" classname="TestArrayDequeue" time="0.0"/>
+    <testcase name="testfront" classname="TestArrayDequeue" time="0.0"/>
+    <testcase name="testback" classname="TestArrayDequeue" time="0.0"/>
+    <testcase name="testtoString" classname="TestArrayDequeue" time="0.0"/>
+    <testcase name="testremoveFront" classname="TestArrayDequeue" time="0.007"/>
+    <testcase name="testResize" classname="TestArrayDequeue" time="0.001"/>
+    <testcase name="testinsertFront" classname="TestArrayDequeue" time="0.0"/>
+  </testsuite>
+</testrun>

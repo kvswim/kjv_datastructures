@@ -1,0 +1,122 @@
+import java.util.Scanner;
+
+/**
+ * @author root
+ * @param <T>
+ *
+ */
+public class Calc<T> extends ListStack<T> {
+	final static Stack stack = new ListStack<String>();
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) throws EmptyException {
+		// TODO Auto-generated method stub
+		int input;
+		String in;
+		
+		Scanner oScan = new Scanner(System.in);
+		whileloop: {
+		while(oScan.hasNext()) {
+			
+			in = oScan.next();
+			String[] parts = in.split(" ");
+			for(int x=0; x < parts.length; x++) {
+				try {
+					if(parts[x].equals("!")) {
+					break whileloop;
+				}
+				else if(parts[x].matches("\\d+")) {
+					stack.push(parts[x]);
+				}
+				else if(parts[x].equals(".")) {
+					System.out.println(stack.top());
+					stack.pop();
+				}
+				else if(parts[x].equals("?")) {
+					System.out.println(stack.toString());
+				}
+				//could check for +-*/% but we need to differentiate
+				else if(parts[x].equals("+")) {
+					add();
+				}
+				else if (parts[x].equals("-")) {
+					subtract();
+				}
+				else if (parts[x].equals("*")) {
+					multiply();
+				}
+				else if (parts[x].equals("/")) {
+					divide();
+				}
+				else if (parts[x].equals("%")) {
+					mod();
+				}
+				//and finally it's not anything we recognize...
+				else {
+					System.out.println("? Input error?");
+				} }
+				catch (EmptyException e) {
+					System.out.println("? There was an error. It was: " + e.toString());
+				}
+			} 
+			}
+		} 	
+	}
+
+	public static void add() {
+		String temp1 = (String) stack.top();
+		int a = Integer.parseInt(temp1);
+		stack.pop();
+		String temp2 = (String) stack.top();
+		int b = Integer.parseInt(temp2);
+		stack.pop();
+		int c = a+b;
+		String answer = Integer.toString(c);
+		stack.push(answer);
+	}
+	public static void subtract() {
+		String temp1 = (String) stack.top();
+		int a = Integer.parseInt(temp1);
+		stack.pop();
+		String temp2 = (String) stack.top();
+		int b = Integer.parseInt(temp2);
+		stack.pop();
+		int c = a-b;
+		String answer = Integer.toString(c);
+		stack.push(answer);
+	}
+	public static void multiply() {
+		String temp1 = (String) stack.top();
+		int a = Integer.parseInt(temp1);
+		stack.pop();
+		String temp2 = (String) stack.top();
+		int b = Integer.parseInt(temp2);
+		stack.pop();
+		int c = a*b;
+		String answer = Integer.toString(c);
+		stack.push(answer);
+	}
+	public static void divide() {
+		String temp1 = (String) stack.top();
+		int a = Integer.parseInt(temp1);
+		stack.pop();
+		String temp2 = (String) stack.top();
+		int b = Integer.parseInt(temp2);
+		stack.pop();
+		int c = a/b;
+		String answer = Integer.toString(c);
+		stack.push(answer);
+	}
+	public static void mod() {
+		String temp1 = (String) stack.top();
+		int a = Integer.parseInt(temp1);
+		stack.pop();
+		String temp2 = (String) stack.top();
+		int b = Integer.parseInt(temp2);
+		stack.pop();
+		int c = a%b;
+		String answer = Integer.toString(c);
+		stack.push(answer);
+	}
+}

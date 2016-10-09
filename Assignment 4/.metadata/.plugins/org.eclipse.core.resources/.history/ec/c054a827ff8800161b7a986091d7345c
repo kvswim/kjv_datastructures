@@ -1,0 +1,79 @@
+
+public class ArrayDequeue implements Dequeue<T> {
+
+	public ArrayDequeue() {
+		// TODO Auto-generated constructor stub
+		//SimpleArray deque = new Dequeue<T>();
+		int front = 0;
+		int back = 0;
+		
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean empty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int length() {
+		// TODO Auto-generated method stub
+		return deque.length();
+	}
+
+	@Override
+	public T front() throws EmptyException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public T back() throws EmptyException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insertFront(T t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insertBack(T t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeFront() throws EmptyException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeBack() throws EmptyException {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void resize() {
+		
+	}
+	
+	public String toString() {
+		String s = "[";
+		for(int i = 0; i < deque.size(); i++) {
+			
+		}
+	}
+
+}

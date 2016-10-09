@@ -1,0 +1,142 @@
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+
+
+/**Data Structures.
+ * Assignment 4
+ * TestArrayDeque.java
+ * @author Kyle Verdeyen
+ */
+public class TestArrayDequeue {
+
+    transient ArrayDequeue test;
+
+    /**Setup for new arraydequeue test.
+     * @throws Exception general exception.
+     */
+    @Before
+    public void setUp() throws Exception {
+        test = new ArrayDequeue();
+    }
+
+    /**Tests whether deque is empty.
+     *Inserts and removes an object and ensures
+     *it is empty.
+     */
+    @Test
+    public void testempty() {
+        test.insertFront(1);
+        test.removeFront();
+        assertEquals(true, test.empty());
+    }
+
+    /**Tests for length.
+     *Inserts 20 units and makes sure the length is 20.
+     */
+    @Test
+    public void testlength() {
+        for (int i = 0; i < 20; i++) {
+            test.insertFront(i);
+        }
+        assertEquals(20, test.length());
+    }
+
+    /** Tests front method.
+     *Inserts 2 units and makes sure front is 2nd inserted.
+     */
+    @Test
+    public void testfront() {
+        test.insertFront(1);
+        test.insertFront(2);
+        assertEquals(2, test.front());
+
+    }
+
+    /**Tests back() method.
+     *Inserts 20 units. Makes sure back
+     *"space" is still null.
+     */
+    @Test
+    public void testback() {
+        for (int i = 0; i < 20; i++) {
+            test.insertBack(i);
+        }
+        assertEquals(null, test.back());
+    }
+
+    /**Tests insertFront().
+     *Inserts 3 units back back front.
+     *Makes sure the front unit is what
+     *was inserted.
+     */
+    @Test
+    public void testinsertFront() {
+        test.insertBack(3);
+        test.insertBack(4);
+        test.insertFront(123);
+        assertEquals(123, test.front());
+    }
+
+    /**Tests insertBack().
+     *Inserts 2 units back
+     *and makes sure the front
+     *is what was inserted first.
+     */
+    @Test
+    public void testinsertBack() {
+        test.insertBack(20);
+        test.insertBack(22);
+        assertEquals(20, test.front());
+    }
+
+    /**Tests removeFront().
+     *Inserts 20 units, removes front unit (0).
+     *Tests that front unit is 1.
+     */
+    @Test
+    public void testremoveFront() {
+        for (int i = 0; i < 20; i++) {
+            test.insertBack(i);
+        }
+        test.removeFront();
+        assertEquals(1, test.front());
+    }
+
+    /**Tests removeBack().
+     *Inserts 3 units BBF.
+     *Checks that the back unit
+     *is still null.
+     */
+    @Test
+    public void testremoveBack() {
+        test.insertFront(20);
+        test.insertFront(33);
+        test.insertBack(10);
+        test.removeBack();
+        assertEquals(null, test.back());
+    }
+
+    /**Tests resize().
+     *Resize will not resize if front=back
+     *(default case for initial deque)
+     *Checks that length is still 0 after.
+     */
+    @Test
+    public void testResize() {
+        test.resize();
+        assertEquals(0, test.length());
+    }
+
+    /**Tests toString().
+     *Inserts 3 units. Outputted formatted
+     *string should be [1, 2, 3].
+     */
+    @Test
+    public void testtoString() {
+        test.insertBack(1);
+        test.insertBack(2);
+        test.insertBack(3);
+        assertEquals("[1, 2, 3]", test.toString());
+    }
+}

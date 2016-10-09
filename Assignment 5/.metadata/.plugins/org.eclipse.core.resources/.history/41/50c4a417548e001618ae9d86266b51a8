@@ -1,0 +1,18 @@
+
+public class SentinelLIstTest extends ListTestBase {
+
+	@Override
+	protected List<String> createList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

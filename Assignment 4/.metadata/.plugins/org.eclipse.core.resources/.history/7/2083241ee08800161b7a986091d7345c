@@ -1,0 +1,22 @@
+/**
+ * 
+ */
+
+/**
+ * @author root
+ * @param <T>
+ *
+ */
+public class Calc<T> extends ListStack<T> {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Stack<T> oStack = new ListStack<T>;
+		oStack.push("Shitlord.");
+		
+	}
+
+}

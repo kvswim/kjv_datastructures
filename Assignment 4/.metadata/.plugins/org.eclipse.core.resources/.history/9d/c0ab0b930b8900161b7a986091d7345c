@@ -1,0 +1,111 @@
+public class ArrayDequeue<T> implements Dequeue<T> {
+
+    protected Object[] deque;
+    private int front;
+    private int back;
+    private int size;
+    private int capacity = 1;
+
+    public ArrayDequeue() {
+        // TODO Auto-generated constructor stub
+        deque = new Object[1];
+        front = 1;
+        back = 0;
+        size = 0;
+        this.capacity = capacity - 1;
+    }
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        ArrayDequeue a = new ArrayDequeue();
+        a.insertFront("Fuck!");
+        System.out.println(a.front());
+    }
+
+    @Override
+    public boolean empty() {
+        // TODO Auto-generated method stub
+        return size == 0;
+    }
+
+    @Override
+    public int length() {
+        return size;
+    }
+
+    @Override
+    public T front() throws EmptyException {
+        if(empty()) {
+            throw new EmptyException();
+        }
+        T temp = (T) deque[(front - 1) % capacity];
+        return temp;
+    }
+
+    @Override
+    public T back() throws EmptyException {
+        if(empty()) {
+            throw new EmptyException();
+        }
+        T temp = (T) deque[(front + 1) % capacity];
+        return temp;
+    }
+
+    @Override
+    public void insertFront(T t) {
+        if(size == capacity) {
+            resize();
+        }
+        deque[front] = t;
+        front = (front + 1) % capacity; 
+        size++;
+    }
+
+    @Override
+    public void insertBack(T t) {
+        if(size == capacity) {
+            resize();
+        }
+        deque[back] = t;
+        back = (back - 1) % capacity;
+        size++;
+    }
+
+    @Override
+    public void removeFront() throws EmptyException {
+        if(empty()) {
+            resize();
+        }
+        front = (front - 1) % capacity;
+        size--;
+    }
+
+    @Override
+    public void removeBack() throws EmptyException {
+        if(empty()) {
+            resize();
+        }
+        back = (back + 1) % capacity;
+        size--;
+    }
+
+    public void resize() {
+        capacity = capacity * 2;
+        Object[] temp;
+        temp = deque;
+        deque = new Object[capacity];
+        for(int i=0; i < temp.length; i++) {
+            deque[i] = temp[i];
+        }
+        //deque = temp;
+        size = this.deque.length;
+    }
+
+    public String toString() {
+        return null;
+    }
+
+}

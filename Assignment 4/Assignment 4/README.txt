@@ -1,0 +1,15 @@
+Kyle Verdeyen
+kverdey1@jhu.edu
+Data Structures
+Assignment 4
+
+Checkstyle errors: 
+I chose to catch Exception as a general exception instead of a
+NullPointer or EmptyException so it can handle any kind of exception. 
+Cyclomatic complexity: I tried abstracting the if switch into its own method but
+could only solve to a complexity of 12.
+Inner assignments: I kept the integer assignments in the line, taking them out
+causes some weird deque instability.
+oStack matches the proper pattern, don't know why I'm getting that...
+Assert.* was the default import for an Eclipse junit file, not sure what I was
+supposed to import specifically.
