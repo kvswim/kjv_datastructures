@@ -55,7 +55,7 @@ public class SentinelList<T> implements List<T> {
 
         @Override
         public boolean hasNext() {
-            return this.current != null;
+            return this.current != SentinelList.this.guardLast;
         }
 
         @Override
@@ -133,9 +133,9 @@ public class SentinelList<T> implements List<T> {
         Node<T> n = new Node<T>();
         n.data = t;
         n.owner = this;
-        n.next = SentinelList.this.guardFirst.next;
-        SentinelList.this.guardFirst.next.prev = n;
-        n.prev = SentinelList.this.guardFirst;
+        n.next = this.guardFirst.next;
+        this.guardFirst.next.prev = n;
+        n.prev = this.guardFirst;
         guardFirst.next = n;
         this.length += 1;
         return n;
@@ -146,9 +146,9 @@ public class SentinelList<T> implements List<T> {
         Node<T> n = new Node<T>();
         n.data = t;
         n.owner = this;
-        n.next = SentinelList.this.guardLast;
-        n.prev = SentinelList.this.guardLast.prev;
-        SentinelList.this.guardLast.prev.next = n;
+        n.next = this.guardLast;
+        n.prev = this.guardLast.prev;
+        this.guardLast.prev.next = n;
         guardLast.prev = n;
         this.length += 1;
         return n;

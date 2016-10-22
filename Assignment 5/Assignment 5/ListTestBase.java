@@ -50,7 +50,6 @@ public abstract class ListTestBase {
         assertTrue(list.empty());
         assertEquals(0, list.length());
         assertEquals("[]", list.toString());
-        
         int c = 0;
         for (String s: list) {
             c++;
@@ -82,16 +81,18 @@ public abstract class ListTestBase {
         list.insertFront("One");
         list.insertFront("Two");
         list.insertFront("Three");
-
         assertFalse(list.empty());
         assertEquals(3, list.length());
         assertEquals("[Three, Two, One]", list.toString());
-
+        list.insertFront("Four");
+        assertFalse(list.empty());
+        assertEquals(4, list.length());
+        assertEquals("[Four, Three, Two, One]", list.toString());
         int c = 0;
         for (String s: list) {
             c++;
         }
-        assertEquals(3, c);
+        assertEquals(4, c);
     }
 
     /**Tests insertBack.
@@ -107,11 +108,17 @@ public abstract class ListTestBase {
         assertEquals(3, list.length());
         assertEquals("[One, Two, Three]", list.toString());
 
+        list.insertBack("Four");
+        assertEquals(4, list.length());
+        list.insertBack("Five");
+        assertFalse(list.empty());
+        assertEquals("[One, Two, Three, Four, Five]", list.toString());
+        assertEquals(5, list.length());
         int c = 0;
         for (String s: list) {
             c++;
         }
-        assertEquals(3, c);
+        assertEquals(5, c);
     }
 
     /**Tests that insertFont and Back are consistent.
@@ -158,6 +165,10 @@ public abstract class ListTestBase {
             c++;
         }
         assertEquals(1, c);
+        list.insertFront("Two");
+        assertEquals("[Two, One]", list.toString());
+        list.removeFront();
+        assertEquals("[One]", list.toString());
     }
 
     /**Tests removeBack().
@@ -180,8 +191,9 @@ public abstract class ListTestBase {
             c++;
         }
         assertEquals(1, c);
+        list.insertBack("Four");
+        assertEquals("[Three, Four]", list.toString());
+        list.removeBack();
+        assertEquals("[Three]", list.toString());
     }
-
-    // TODO You need to add *many* more test cases here, ideally before you
-    // even start working on SentinelList!
 }

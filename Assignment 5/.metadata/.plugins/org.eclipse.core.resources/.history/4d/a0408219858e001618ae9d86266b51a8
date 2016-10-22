@@ -1,0 +1,29 @@
+Kyle Verdeyen
+kverdey1@jhu.edu
+Assignment 5
+
+ListTestBase: for(String s: list) loops have been omitted due to anomalies.
+	Other tests using toString and length work properly, but there is a 
+	problem counting using this loop. See email thread from 
+	kverdey1@jhu.edu.
+
+List Reflection
+Q1: You cannot make a list of arrays with the current data abstraction. 
+	Even if Java itself let you, there would be significant difficulty
+	in accessing the array inside the list and would require further 
+	methods to fix that. The Oracle implementation of the List 
+	uses ints for positions to make it more like an array, while our
+	implementation uses a Position abstract for each node. This can 
+	be both a blessing and a curse, as it enables static calling of a
+	position but can't be constantly referenced like our Position can
+	(e.g the indices may stay the same, but the data may change
+	in the specific indice based on inserts/removes).
+	We could omit methods like insertFront, insertBack, empty(), 
+	removefront, removeback, instead replacing them with specific
+	positions in insertbefore/after, size==0 and remove(p). However
+	it helps that we have these methods built into the class because 
+	it makes certain actions simpler. Finally I think nomenclature for
+	certain methods (namely first() and last()) should be named isFirst
+	and isLast since we're checking that the passed position is first,
+	not calling the first position.  
+	

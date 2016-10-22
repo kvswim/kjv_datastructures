@@ -1,0 +1,9 @@
+Kyle Verdeyen
+kverdey1@jhu.edu
+Assignment 5
+
+List Reflection
+Q1: You cannot make a list of arrays with the current data abstraction. 
+	Even if Java itself let you, there would be significant difficulty
+	in accessing the array inside the list and would require further 
+	methods to fix that. 
