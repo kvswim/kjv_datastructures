@@ -1,0 +1,248 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author root
+ *
+ * @param <V>
+ * @param <E>
+ */
+public class SparseGraph<V, E> implements Graph<V, E> {
+    private ArrayList<SparseVertex<V>> incidence_list;
+    //incidence list to keep track of vertices
+
+    /**
+     * @author root
+     *
+     * @param <V>
+     */
+    public class SparseVertex<V> implements Vertex<V> {
+        private V data; //holds data, abstract vertex type
+        private Graph<V,E> owner; //to verify that the working graph
+        //is the same one we started working on
+        private Object label; //for use in label method
+        private List<SparseEdge <E>> in; //used in each vertex, see slides
+        private List<SparseEdge <E>> out; //used in each vertex, see slides
+        //could use arraylist but iterator is PITA
+        @Override
+        public V get() {
+            return this.data;
+        }
+        @Override
+        public void put(V v) {
+            this.data = v;
+        }
+    }
+
+
+    /**
+     * @author root
+     *
+     * @param <E>
+     */
+    public class SparseEdge<E> implements Edge<E> {
+        private E data;
+        private Graph<V, E> owner;
+        private Object label;
+        private SparseVertex<V> next;
+        private SparseVertex<V> previous;
+        @Override
+        public E get() {
+            return this.data;
+        }
+        @Override
+        public void put(E e) {
+            this.data = e;
+        }
+    }
+    @Override
+    public Vertex<V> insert(V v) {
+        SparseVertex<V> insert = new SparseVertex<V>();
+        insert.data = v;
+        insert.owner = this;
+        insert.in = new ArrayList<SparseEdge <E>>();
+        insert.out = new ArrayList<SparseEdge <E>>();
+        this.incidence_list.add(insert);
+        return insert;
+    }
+
+    @Override
+    public Edge<E> insert(Vertex<V> from, Vertex<V> to, E e)
+            throws PositionException, InsertionException {
+        SparseVertex<V> vFrom = this.convert(from);
+        SparseVertex<V> vTo = this.convert(to);
+        SparseEdge<E> edge = new SparseEdge<E>();
+        edge.data = e;
+        edge.owner = this;
+        edge.next = vTo;
+        edge.previous = vFrom;
+        if (vFrom.equals(vTo) || hasDuplicateEdge(edge)) {
+            throw new InsertionException();
+        }
+        vFrom.out.add(edge);
+        vTo.in.add(edge);
+        return edge;
+    }
+
+    @Override
+    public V remove(Vertex<V> v) throws PositionException, RemovalException {
+        SparseVertex<V> vertex = this.convert(v);
+        if (vertex.in.isEmpty() && vertex.out.isEmpty()) {
+            incidence_list.remove(vertex);
+            vertex.owner = null;
+        }
+        else {
+            throw new RemovalException();
+        }
+        return vertex.data;
+    }
+
+    @Override
+    public E remove(Edge<E> e) throws PositionException {
+        SparseEdge<E> edge = this.convert(e);
+        edge.next.in.remove(edge);
+        edge.previous.out.remove(edge);
+        return edge.data;
+    }
+
+    @Override
+    public Iterable<Vertex<V>> vertices() {
+        ArrayList<Vertex <V>> list = new ArrayList<Vertex <V>>();
+        for (SparseVertex<V> vertex : incidence_list) {
+            list.add(vertex);
+        }
+        return list;
+    }
+
+    @Override
+    public Iterable<Edge<E>> edges() {
+        ArrayList<Edge <E>> list = new ArrayList<Edge <E>>();
+        for (SparseVertex<V> vertex : incidence_list) {
+            for(SparseEdge<E> edge : vertex.in) {
+                list.add(edge);
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public Iterable<Edge<E>> outgoing(Vertex<V> v) throws PositionException {
+        SparseVertex<V> vertex = this.convert(v);
+        ArrayList<Edge <E>> edges = new ArrayList<Edge<E>>();
+        for (SparseEdge<E> x : vertex.out) {
+            edges.add(x);
+        }
+        return edges;
+    }
+
+    @Override
+    public Iterable<Edge<E>> incoming(Vertex<V> v) throws PositionException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Vertex<V> from(Edge<E> e) throws PositionException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Vertex<V> to(Edge<E> e) throws PositionException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void label(Vertex<V> v, Object l) throws PositionException {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void label(Edge<E> e, Object l) throws PositionException {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public Object label(Vertex<V> v) throws PositionException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Object label(Edge<E> e) throws PositionException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void clearLabels() {
+        // TODO Auto-generated method stub
+
+    }
+    
+    /**Constructor.
+     * Initializes new incidence list.
+     * 
+     */
+    public SparseGraph() {
+        this.incidence_list = new ArrayList<SparseVertex <V>>();
+    }
+    
+    /**Converts from a Vertex to a SparseVertex.
+     * @param invertex input Vertex type.
+     * @return outvertex output SparseVertex type.
+     * @throws PositionException if conversion fails.
+     */
+    public SparseVertex<V> convert(Vertex<V> invertex) throws PositionException {
+        try {
+            SparseVertex<V> outvertex = (SparseVertex<V>) invertex;
+            if (outvertex.owner != this) {
+                throw new PositionException();
+            }
+            return outvertex;
+        }
+        //bitwise OR
+        catch (NullPointerException | ClassCastException error) {
+            throw new PositionException();
+        }
+    }
+    
+    /**Converts from an Edge to SparseEdge.
+     * @param inedge input Edge type.
+     * @return outedge output SparseEdge type.
+     * @throws PositionException if conversion fails.
+     */
+    public SparseEdge<E> convert(Edge<E> inedge) throws PositionException {
+        try {
+            SparseEdge<E> outedge = (SparseEdge<E>) inedge;
+            if (outedge.owner != this) {
+                throw new PositionException();
+            }
+            return outedge;
+        }
+        catch (NullPointerException | ClassCastException error) {
+            throw new PositionException();
+        }
+    }
+    
+    /**
+     * @param inedge
+     * @return
+     */
+    public boolean hasDuplicateEdge(SparseEdge<E> inedge) {
+        for(SparseEdge<E> checkedge : inedge.next.in) {
+            if (inedge.equals(checkedge)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public String toString() {
+        String s = "";
+        return s;
+    }
+}

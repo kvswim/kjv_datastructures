@@ -1,0 +1,17 @@
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+
+
+public abstract class GraphTestBase {
+    private Graph<Object, Object> graph;
+    protected abstract Graph<Object, Object> createGraph();
+    @Before
+    public void setupGraph() {
+        graph = this.createGraph();
+    }
+    @Test
+    public void Dickballsworks() {
+        assertEquals(4,4);
+    }
+}

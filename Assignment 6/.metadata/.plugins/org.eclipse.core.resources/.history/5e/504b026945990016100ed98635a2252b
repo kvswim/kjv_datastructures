@@ -1,0 +1,11 @@
+
+/**
+ * @author root
+ *
+ */
+public class SparseGraphTest<V, E> extends GraphTestBase<V, E> {
+    @Override
+    protected Graph<V, E> createGraph() {
+        return new SparseGraph<>(); 
+    }
+}

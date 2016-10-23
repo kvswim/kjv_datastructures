@@ -1,0 +1,22 @@
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+
+
+public abstract class GraphTestBase {
+    private Graph<String, String> graph;
+    protected abstract Graph<String, String> createGraph();
+    @Before
+    public void setupGraph() {
+        graph = this.createGraph();
+    }
+    
+    @Test
+    public void insertVertexWorks() {
+        graph.insert("Inserted");
+        graph.insert("Insert2");
+        System.out.println(graph.toString());
+        //graph.toString();
+        //graph.convert("Inserted");
+    }
+}

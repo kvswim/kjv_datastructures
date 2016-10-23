@@ -1,0 +1,14 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+public class GraphTestBase<V, E> {
+    SparseGraph<V, E> sg = new SparseGraph<>();
+    
+    @Before
+    protected SparseGraph createGraph() {
+        sg = this.createGraph();
+    }
+
+}

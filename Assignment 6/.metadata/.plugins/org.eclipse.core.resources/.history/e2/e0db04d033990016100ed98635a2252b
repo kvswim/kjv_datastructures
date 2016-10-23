@@ -1,0 +1,243 @@
+/**
+ * Michael Wohl - mwohl3
+ * Assignment 6 - Problem 1
+ */
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * SparseGraph is is a graph data structure that is non specific and
+ * can be used for any types that would want to use graph.
+ *
+ * @param <V> Vertex element type.
+ * @param <E> Edge element type.
+ */
+public class SparseGraph<V, E> implements Graph<V, E> {
+    
+    /**
+     * SparseVertex class, defines the things need for a Vertex.
+     *
+     * @param <V> Vertex element type.
+     */
+    public class SparseVertex<V> implements Vertex<V> {
+        private V data;
+        private List<SparseEdge<E>> in;
+        private List<SparseEdge<E>> out;
+        private Graph<V, E> owner;
+        private Object label;
+
+        @Override
+        public V get() {
+            return this.data;
+        }
+
+        @Override
+        public void put(V v) {
+            this.data = v;
+        }
+    }
+
+    /**
+     * SparseEdge class, defines the things needed for an Edge.
+     *
+     * @param <E> Edge element type.
+     */
+    public class SparseEdge<E> implements Edge<E> {
+        private E data;
+        private SparseVertex<V> next;
+        private SparseVertex<V> prev;
+        private Graph<V, E> owner;
+        private Object label;
+
+        @Override
+        public E get() {
+            return this.data;
+        }
+
+        @Override
+        public void put(E e) {
+            this.data = e;
+        }
+    }
+
+    //List of vertices
+    private ArrayList<SparseVertex<V>> vertices;
+
+    /**
+     * Constructor, sets up  vertices.
+     */
+    public SparseGraph() {
+        this.vertices = new ArrayList<SparseVertex<V>>();
+    }
+
+    //Convert method for vertex
+    private SparseVertex<V> convert(Vertex<V> v) throws PositionException {
+        try {
+            SparseVertex<V> sv = (SparseVertex<V>) v;
+            if (sv.owner != this) {
+                throw new PositionException();
+            }
+            return sv;
+        } catch (NullPointerException | ClassCastException e) {
+            throw new PositionException();
+        }
+    }
+
+    //Convert method for edge
+    private SparseEdge<E> convert(Edge<E> e) throws PositionException {
+        try {
+            SparseEdge<E> se = (SparseEdge<E>) e;
+            if (se.owner != this) {
+                throw new PositionException();
+            }
+            return se;
+        } catch (NullPointerException | ClassCastException er) {
+            throw new PositionException();
+        }
+    }
+    
+    /**
+     * Checks to see if an edge already exists.
+     *
+     * @param se Edge being checked.
+     * @return boolean Whether it's a duplicate or not.
+     */
+    private boolean isDupeEdge(SparseEdge<E> se) {
+        for (SparseEdge<E> current : se.next.in) {
+            if (se.equals(current)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    @Override
+    public Vertex<V> insert(V v) {
+        SparseVertex<V> sv = new SparseVertex<V>();
+        sv.data = v;
+        sv.owner = this;
+        sv.in = new ArrayList<SparseEdge<E>>();
+        sv.out = new ArrayList<SparseEdge<E>>();
+        this.vertices.add(sv);
+        return sv;
+    }
+
+    @Override
+    public Edge<E> insert(Vertex<V> from, Vertex<V> to, E e)
+        throws PositionException, InsertionException {
+
+        SparseVertex<V> svFrom = this.convert(from);
+        SparseVertex<V> svTo = this.convert(to);
+        SparseEdge<E> se = new SparseEdge<E>();
+
+        se.data = e;
+        se.owner = this;
+        se.next = svTo;
+        se.prev = svFrom;
+        if (svFrom.equals(svTo) || isDupeEdge(se)) {
+            throw new InsertionException();
+        }
+        svFrom.out.add(se);
+        svTo.in.add(se);
+        return se;
+    }
+
+    @Override
+    public V remove(Vertex<V> v) throws PositionException, RemovalException {
+        SparseVertex<V> sv = this.convert(v);
+        if (sv.in.isEmpty() && sv.out.isEmpty()) {
+            vertices.remove(sv);
+            sv.owner = null;
+        } else {
+            throw new RemovalException();
+        }
+        return sv.data;
+    }
+
+    @Override
+    public E remove(Edge<E> e) throws PositionException {
+        SparseEdge<E> se = this.convert(e);
+        se.next.in.remove(se);
+        se.prev.out.remove(se);
+        return se.data;
+    }
+
+    @Override
+    public Iterable<Vertex<V>> vertices() {
+        ArrayList<Vertex<V>> temp = new ArrayList<Vertex<V>>();
+        for (SparseVertex<V> sv : vertices) {
+            temp.add(sv);
+        }
+        return temp;
+    }
+
+    @Override
+    public Iterable<Edge<E>> edges() {
+        ArrayList<Edge<E>> edges = new ArrayList<Edge<E>>();
+        for (SparseVertex<V> sv : vertices) {
+            for (SparseEdge<E> current : sv.in) {
+                edges.add(current);
+            }
+        }
+        return edges;
+    }
+
+    @Override
+    public Iterable<Edge<E>> outgoing(Vertex<V> v) throws PositionException {
+        SparseVertex<V> sv = this.convert(v);
+        ArrayList<Edge<E>> outgoingEdges = new ArrayList<Edge<E>>();
+        for (SparseEdge<E> current : sv.out) {
+            outgoingEdges.add(current);
+        }
+        return outgoingEdges;
+    }
+
+    @Override
+    public Iterable<Edge<E>> incoming(Vertex<V> v) throws PositionException {
+        SparseVertex<V> sv = this.convert(v);
+        ArrayList<Edge<E>> incomingEdges = new ArrayList<Edge<E>>();
+        for (SparseEdge<E> current : sv.in) {
+            incomingEdges.add(current);
+        }
+        return incomingEdges;
+    }
+
+    @Override
+    public Vertex<V> from(Edge<E> e) throws PositionException {
+        return this.convert(e).prev;
+    }
+
+    @Override
+    public Vertex<V> to(Edge<E> e) throws PositionException {
+        return this.convert(e).next;
+    }
+
+    @Override
+    public void label(Vertex<V> v, Object l) throws PositionException {
+        this.convert(v).label = l;
+    }
+
+    @Override
+    public void label(Edge<E> e, Object l) throws PositionException{
+        this.convert(e).label = l;
+    }
+
+    @Override
+    public Object label(Vertex<V> v) throws PositionException{
+        return this.convert(v).label;
+    }
+
+    @Override
+    public Object label(Edge<E> e) throws PositionException{
+        return this.convert(e).label;
+    }
+
+    @Override
+    public void clearLabels(){
+        for (SparseVertex<V> sv : vertices) {
+            sv.label = null;
+            for (SparseEdge<E> current : sv.in) {
+                current.label = null;
+            }
+        }
+    }
+}

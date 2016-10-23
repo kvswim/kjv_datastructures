@@ -1,0 +1,18 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+public class GraphTestBase<V, E> {
+
+    @Test
+    public void test() {
+        fail("Not yet implemented");
+    }
+
+    protected Graph<V, E> createGraph() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+}

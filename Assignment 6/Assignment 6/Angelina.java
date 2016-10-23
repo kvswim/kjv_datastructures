@@ -106,7 +106,7 @@ public final class Angelina {
     */
     public static void main(String[] args)
         throws FileNotFoundException, IOException {
-        // read the input, initialize globals
+        /*// read the input, initialize globals
         readInput(args[0], args[1]);
 
         // check that we could find both actors, quit if not
@@ -120,6 +120,6 @@ public final class Angelina {
         }
 
         // play "six degrees of Anglina Jolie" using breadth-first search
-        solveJolie();
+        solveJolie();*/
     }
 }
