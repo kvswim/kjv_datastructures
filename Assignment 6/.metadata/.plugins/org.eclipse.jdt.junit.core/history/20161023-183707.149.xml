@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="New_configuration" project="Assignment 6" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="SparseGraphTest" time="0.028">
+    <testcase name="newGraphEmpty" classname="SparseGraphTest" time="0.013"/>
+    <testcase name="insertVertexWorks" classname="SparseGraphTest" time="0.003"/>
+    <testcase name="toStringWorks" classname="SparseGraphTest" time="0.012"/>
+  </testsuite>
+</testrun>

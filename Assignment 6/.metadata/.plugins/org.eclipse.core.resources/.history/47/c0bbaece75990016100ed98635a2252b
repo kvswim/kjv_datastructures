@@ -87,7 +87,6 @@ public final class Angelina {
             }
         }
         reader.close();
-        System.out.println(graph.toString());
     }
 
     // Perform a breadth-first search (BFS) starting from Angelina Jolie
@@ -97,24 +96,6 @@ public final class Angelina {
     // sure that the resulting path is among the shortest ones.
     private static void solveJolie() {
         // put your code here, use System.exit(0) to stop after printing!
-        //Queue<String> queue = new LinkedList<String>();
-        //queue.add()
-
-        /* Since this assignment is a huge clusterf*ck and I'm too dumb
-         * to even know how to access the first vertex in the graph,
-         * I'm going to write pseudocode instead. 
-         * Please take me back behind the shed and put me out of my misery.
-         * 
-         * Map dataset. Set all distances to -1.
-         * New queue. Add first vertex of map.
-         * While the queue isn't empty:
-         * :current working node = front of queue
-         * :if the node matches the actor we're looking for, print the
-         * : distance from root to working node.
-         * :else for each child node from the current working node 
-         * : if the distance from root to node == -1 distance =curdist+1
-         * :    add child to end of list
-         */
     }
 
     /**

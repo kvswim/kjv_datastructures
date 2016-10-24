@@ -99,12 +99,10 @@ public final class Angelina {
         // put your code here, use System.exit(0) to stop after printing!
         //Queue<String> queue = new LinkedList<String>();
         //queue.add()
-
         /* Since this assignment is a huge clusterf*ck and I'm too dumb
          * to even know how to access the first vertex in the graph,
          * I'm going to write pseudocode instead. 
          * Please take me back behind the shed and put me out of my misery.
-         * 
          * Map dataset. Set all distances to -1.
          * New queue. Add first vertex of map.
          * While the queue isn't empty:
