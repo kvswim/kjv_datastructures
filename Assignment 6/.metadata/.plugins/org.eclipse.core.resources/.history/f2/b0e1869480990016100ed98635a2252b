@@ -1,15 +1,14 @@
 import java.util.Map;
 import java.util.HashMap;
-//import java.util.Queue;
-//import java.util.LinkedList;
+import java.util.Queue;
+import java.util.LinkedList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
 
-/** Kyle Verdeyen
- * kverdey1@jhu.edu
+/**
     Six Degrees of Angelina Jolie.
 
     Some of the stuff I used in here is a little ahead of us. For
@@ -103,16 +102,16 @@ public final class Angelina {
 
         /* Since this assignment is a huge clusterf*ck and I'm too dumb
          * to even know how to access the first vertex in the graph,
-         * I'm going to write pseudocode instead.
+         * I'm going to write pseudocode instead. 
          * Please take me back behind the shed and put me out of my misery.
-         *
+         * 
          * Map dataset. Set all distances to -1.
          * New queue. Add first vertex of map.
          * While the queue isn't empty:
          * :current working node = front of queue
          * :if the node matches the actor we're looking for, print the
          * : distance from root to working node.
-         * :else for each child node from the current working node
+         * :else for each child node from the current working node 
          * : if the distance from root to node == -1 distance =curdist+1
          * :    add child to end of list
          */

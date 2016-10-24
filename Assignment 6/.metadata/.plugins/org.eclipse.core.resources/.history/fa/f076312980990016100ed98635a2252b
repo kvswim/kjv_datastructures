@@ -1,16 +1,14 @@
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
-//import java.util.List;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
 
 
-/**Kyle Verdeyen
- * kverdey1@jhu.edu
- * JUnit test suite for SparseGraph.
+/**JUnit test suite for SparseGraph.
  * @author root
  *
  */
@@ -61,19 +59,13 @@ public abstract class GraphTestBase {
                 ("digraph {\n  \"Insertion I\";\n  \"Insertion II\";\n}");
         assertEquals(stringtest, graph.toString());
     }
-
-    /**Tests remove.
-     *
-     */
+    
     @Test
     public void removeWorks() {
         graph.insert("Insertion");
         //To be honest I have no idea how to use remove.
     }
-
-    /**Tests from and to.
-     *
-     */
+    
     @Test
     public void fromToWorks() {
         //i feel like my skull is on fire

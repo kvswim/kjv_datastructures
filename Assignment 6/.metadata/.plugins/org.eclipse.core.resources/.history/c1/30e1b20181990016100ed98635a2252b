@@ -6,7 +6,7 @@ import java.util.List;
  * SparseGraph.java
  * 600.226
  * Data Structures Assignment 6
- * kverdey1@jhu.edu
+ * kverdey1
  * @author Kyle Verdeyen
  * @param <V> vertex.
  * @param <E> edge.

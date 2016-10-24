@@ -8,9 +8,7 @@ import org.junit.Test;
 
 
 
-/**Kyle Verdeyen
- * kverdey1@jhu.edu
- * JUnit test suite for SparseGraph.
+/**JUnit test suite for SparseGraph.
  * @author root
  *
  */
