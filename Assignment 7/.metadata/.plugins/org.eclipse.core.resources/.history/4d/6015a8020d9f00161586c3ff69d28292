@@ -1,0 +1,115 @@
+import java.util.Comparator;
+
+
+/**BinaryHeapPriorityQueue.
+ * Implements priority queue in a binary heap using arrays.
+ * Kyle Verdeyen
+ * kverdey1@jhu.edu
+ * @author root
+ *
+ * @param <T>
+ */
+public class BinaryHeapPriorityQueue<T extends Comparable<? super T>>
+    implements PriorityQueue<T> {
+    private int size;
+    private final int CAP = 100;
+    private Comparable[] data;
+
+    /**Default constructor.
+     *
+     */
+    public BinaryHeapPriorityQueue() {
+        size = 0;
+        data = new Comparable[CAP + 1];
+    }
+
+    /**Using an array of Comparables.
+     * @param array input array.
+     */
+    public BinaryHeapPriorityQueue(Comparable[] array) {
+        size = array.length;
+        data = new Comparable[array.length + 1];
+        for (int i = 0; i < array.length; i++) {
+            data[i + 1] = array[i];
+        }
+        buildHeap();
+    }
+
+    private static class DefaultComparator<T extends Comparable<? super T>>
+        implements Comparator<T> {
+        public int compare(T t1, T t2) {
+            return t1.compareTo(t2);
+        }
+    }
+
+    private void buildHeap() {
+        for (int i = size / 2; i > 0; i++) {
+            bubbleDown(i);
+        }
+    }
+
+    private void bubbleDown(int x) {
+        int child;
+        Comparable temp = data[x];
+        for (; x * 2 <= size; x = child) {
+            child = x * 2;
+            if (child != size && data[child + 1].compareTo(data[child]) > 0) {
+                child++;
+            }
+            if (data[child].compareTo(temp) < 0) {
+                data[x] = data[child];
+            } else {
+                break;
+            }
+        }
+        data[x] = temp;
+    }
+
+    private void resizeArray() {
+        Comparable[] newarray;
+        newarray = new Comparable[data.length * 2];
+        for (int i = 0; i < data.length; i++) {
+            newarray[i] = data[i];
+        }
+        data = newarray;
+    }
+
+    @Override
+    public void insert(T t) {
+        if (size + 1 == data.length) {
+            resizeArray();
+        }
+        int x = ++size;
+        data[0] = t;
+        for (; t.compareTo(((T) data[x / 2])) < 0; x /= 2) {
+            data[x] = data[x / 2];
+
+        }
+        data[x] = t;
+    }
+
+    @Override
+    public void remove() throws EmptyException {
+        if (this.empty()) {
+            throw new EmptyException();
+        }
+        data[1] = data[size--];
+        bubbleDown(1);
+        //1 is highest value like in PQ
+    }
+
+    @Override
+    public T top() throws EmptyException {
+        if (this.empty()) {
+            throw new EmptyException();
+        }
+        return (T) data[1];
+        //1 is highest value like in PQ
+    }
+
+    @Override
+    public boolean empty() {
+        return size == 0;
+    }
+
+}

@@ -1,0 +1,63 @@
+Kyle Verdeyen
+kverdey1@jhu.edu
+Assignment 7 Readme
+
+In case you're wondering, my machine CPU is an i5-4200U.
+Type Intel ARK faster into google, neeerd! 
+
+
+-------Problem 1: BasicSetsBench.java
+$ java -jar jaybee.jar BasicSetsBench
+insertLinearArraySet	     50000	     23936 ns/op	        96 B/op
+ insertLinearListSet	    100000	     23104 ns/op	       -55 B/op
+insertRandomArraySet	     50000	     33580 ns/op	       -27 B/op
+ insertRandomListSet	     50000	     32311 ns/op	        27 B/op
+lookupLinearArraySet	    100000	     21724 ns/op	      1235 B/op
+ lookupLinearListSet	     50000	     28341 ns/op	        91 B/op
+lookupRandomArraySet	     50000	     21893 ns/op	       252 B/op
+ lookupRandomListSet	     50000	     30543 ns/op	       371 B/op
+removeRandomArraySet	     30000	     53792 ns/op	       366 B/op
+ removeRandomListSet	     30000	     40704 ns/op	      1023 B/op
+
+ -----Problem 1: Unique.java Biased 1k
+ $ sudo ./xtime java Unique<biased1k.txt >/dev/null
+0.13 seconds 22888 kilobytes java Unique
+ 
+ -------Problem 1: Unique.java Mixed 1k
+ $ sudo ./xtime java Unique<mixed1k.txt >/dev/null
+0.16 seconds 23216 kilobytes java Unique
+ 
+ 
+ -------Problem 1: Unique.java Random 1k
+ $ sudo ./xtime java Unique<random1k.txt >/dev/null
+0.17 seconds 27020 kilobytes java Unique
+ 
+ 
+ -------Problem 1: Unique.java Biased 10k
+ $ sudo ./xtime java Unique<biased10k.txt >/dev/null
+0.22 seconds 32568 kilobytes java Unique
+ 
+
+ -------Problem 1: Unique.java Mixed 10k
+ $ sudo ./xtime java Unique<mixed10k.txt >/dev/null
+0.28 seconds 34084 kilobytes java Unique
+ 
+ --------Problem 1: Unique.java Random 10k
+ $ sudo ./xtime java Unique<random10k.txt >/dev/null
+0.39 seconds 34400 kilobytes java Unique
+ 
+ 
+ -------Problem 1: Unique.java Biased 100k
+ $ sudo ./xtime java Unique<biased100k.txt >/dev/null
+0.76 seconds 37252 kilobytes java Unique
+ 
+ 
+ -------Problem 1: Unique.java Mixed 100k
+ $ sudo ./xtime java Unique<mixed100k.txt >/dev/null
+3.38 seconds 40576 kilobytes java Unique
+ 
+ 
+ --------Problem 1: Unique.java Random 100k
+ $ sudo ./xtime java Unique<random100k.txt >/dev/null
+8.29 seconds 43092 kilobytes java Unique
+ 

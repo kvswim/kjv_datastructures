@@ -1,0 +1,17 @@
+Kyle Verdeyen
+kverdey1@jhu.edu
+Assignment 7 Readme
+
+
+Problem 1: BasicSetsBench.java
+$ java -jar jaybee.jar BasicSetsBench
+insertLinearArraySet	     50000	     23936 ns/op	        96 B/op
+ insertLinearListSet	    100000	     23104 ns/op	       -55 B/op
+insertRandomArraySet	     50000	     33580 ns/op	       -27 B/op
+ insertRandomListSet	     50000	     32311 ns/op	        27 B/op
+lookupLinearArraySet	    100000	     21724 ns/op	      1235 B/op
+ lookupLinearListSet	     50000	     28341 ns/op	        91 B/op
+lookupRandomArraySet	     50000	     21893 ns/op	       252 B/op
+ lookupRandomListSet	     50000	     30543 ns/op	       371 B/op
+removeRandomArraySet	     30000	     53792 ns/op	       366 B/op
+ removeRandomListSet	     30000	     40704 ns/op	      1023 B/op

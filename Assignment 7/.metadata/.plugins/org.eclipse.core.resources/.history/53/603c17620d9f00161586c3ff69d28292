@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ * Filter unique integers from standard input to standard output.
+ *
+ * If you're benchmarking this program, you may want to suppress
+ * the output by redirecting it to /dev/null.
+ */
+public final class UniqueQueue {
+    private static PriorityQueue<Integer> data;
+
+    // Make checkstyle happy.
+    private UniqueQueue() {}
+
+    /**
+     *  Main method.
+     *  @param args Command line arguments (ignored).
+     */
+    public static void main(String[] args) {
+        data = new BinaryHeapPriorityQueue<Integer>();
+        Scanner scanner = new Scanner(System.in);
+        ArrayList array = new ArrayList();
+        while (scanner.hasNextInt()) {
+            int i = scanner.nextInt();
+            if(!array.contains(i)){
+                data.insert(i);
+                array.add(i);
+            }
+             
+        }
+
+        System.out.println(data.toString());
+        scanner.close();
+    }
+}

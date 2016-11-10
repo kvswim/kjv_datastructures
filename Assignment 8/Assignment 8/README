@@ -1,0 +1,19 @@
+Kyle Verdeyen
+kverdey1@jhu.edu
+Assignment 8 README
+
+Problem 1: Words.java
+Average taken over 4 runs.
+Biased (50%):
+	1k: 0.2675 sec, 29282kb
+	10k: 0.4325 sec, 34912kb
+	100k: 1.5075 sec, 40253kb
+Sorted (0%):
+	1k: 0.32 sec, 28775kb
+	10k: 0.4875 sec, 35989kb
+	100k: 1.3725 sec, 43169kb
+Random (0%):
+	1k: 0.27 sec, 30898kb
+	10k: 0.4725 sec, 36149kb
+	100k: 1.555 sec, 44144kb
+

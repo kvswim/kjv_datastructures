@@ -1,0 +1,158 @@
+Kyle Verdeyen
+kverdey1@jhu.edu
+Assignment 7 Readme
+
+
+-------Problem 1: BasicSetsBench.java
+$ sudo java -jar jaybee.jar BasicSetsBench
+insertLinearArraySet	     50000	     29713 ns/op	        96 B/op
+ insertLinearListSet	     50000	     22454 ns/op	       112 B/op
+insertRandomArraySet	     50000	     28636 ns/op	       -32 B/op
+ insertRandomListSet	     50000	     35813 ns/op	        24 B/op
+lookupLinearArraySet	    100000	     22397 ns/op	      1230 B/op
+ lookupLinearListSet	     50000	     27927 ns/op	       239 B/op
+lookupRandomArraySet	     50000	     22820 ns/op	      1028 B/op
+ lookupRandomListSet	     50000	     31338 ns/op	       377 B/op
+removeRandomArraySet	     30000	     45516 ns/op	      -330 B/op
+ removeRandomListSet	     30000	     49479 ns/op	       540 B/op
+
+
+ -----Problem 1: Unique.java ArraySet Biased 1k
+ $ sudo ./xtime java Unique<biased1k.txt >/dev/null
+0.13 seconds 22888 kilobytes java Unique
+ 
+ -------Problem 1: Unique.java ArraySet Mixed 1k
+ $ sudo ./xtime java Unique<mixed1k.txt >/dev/null
+0.16 seconds 23216 kilobytes java Unique
+ 
+ 
+ -------Problem 1: Unique.java ArraySet Random 1k
+ $ sudo ./xtime java Unique<random1k.txt >/dev/null
+0.17 seconds 27020 kilobytes java Unique
+ 
+ 
+ -------Problem 1: Unique.java ArraySet Biased 10k
+ $ sudo ./xtime java Unique<biased10k.txt >/dev/null
+0.22 seconds 32568 kilobytes java Unique
+ 
+
+ -------Problem 1: Unique.java ArraySet Mixed 10k
+ $ sudo ./xtime java Unique<mixed10k.txt >/dev/null
+0.28 seconds 34084 kilobytes java Unique
+ 
+ --------Problem 1: Unique.java ArraySet Random 10k
+ $ sudo ./xtime java Unique<random10k.txt >/dev/null
+0.39 seconds 34400 kilobytes java Unique
+ 
+ 
+ -------Problem 1: Unique.java ArraySet Biased 100k
+ $ sudo ./xtime java Unique<biased100k.txt >/dev/null
+0.76 seconds 37252 kilobytes java Unique
+ 
+ 
+ -------Problem 1: Unique.java ArraySet Mixed 100k
+ $ sudo ./xtime java Unique<mixed100k.txt >/dev/null
+3.38 seconds 40576 kilobytes java Unique
+ 
+ 
+ --------Problem 1: Unique.java ArraySet Random 100k
+ $ sudo ./xtime java Unique<random100k.txt >/dev/null
+8.29 seconds 43092 kilobytes java Unique
+
+--------Problem 1: Unique.java ListSet AllDataSets
+It was at this point that I got lazy and made a bash script.
+$ sudo ./unique.sh
+Biased 1k:
+0.15 seconds 22612 kilobytes java Unique
+Mixed 1k:
+0.16 seconds 23096 kilobytes java Unique
+Random 1k:
+0.17 seconds 23212 kilobytes java Unique
+Biased 10k:
+0.26 seconds 29528 kilobytes java Unique
+Mixed 10k:
+0.61 seconds 33136 kilobytes java Unique
+Random 10k: 
+0.73 seconds 35888 kilobytes java Unique
+Biased 100k: 
+2.21 seconds 36952 kilobytes java Unique
+Mixed 100k: 
+12.60 seconds 42628 kilobytes java Unique
+Random 100k: 
+41.09 seconds 42448 kilobytes java Unique
+
+---------Problem 1 writeup
+BasicSetsBench is testing insert, lookup, and remove of linear and random
+list sets and array sets. The test is for comparison of list sets and array sets. 
+We can see from the data that for linear insertion, arrays take longer than lists.
+This is probably because the list only needs to create a new node, but the array
+needs to grow if it is full. For random insertions, arrays take less time than lists,
+possibly due to lists requiring more assignments between nodes. For both linear and random
+lookups, arrays have the advantage because the find method does not need to assign a new 
+node during each run of the loop, only needing to check the array position based on an int.  
+Running the test multiple times, the remove flip flops or is nearly the same for both sets.
+
+Unique.java times insertion times for different sizes and randomness bias of 
+data sets. It's called Unique because only unique numbers will be added to the set. 
+Insert first checks if the number is already in the set and breaks if it finds the #.
+More random data (e.g. more unique numbers) takes more time to insert than less random
+(e.g. more repetition) numbers. ListSet takes significantly more time especially in the 100k
+section due to the overhead from nodes in large n compared to arrays. 
+
+-----------Problem 2: Unique.java MovetoFrontListSet
+$ sudo ./unique.sh
+Biased 1k:
+0.24 seconds 26676 kilobytes java Unique
+Mixed 1k:
+0.23 seconds 26700 kilobytes java Unique
+Random 1k:
+0.22 seconds 27404 kilobytes java Unique
+Biased 10k:
+0.22 seconds 33864 kilobytes java Unique
+Mixed 10k:
+0.39 seconds 35512 kilobytes java Unique
+Random 10k: 
+0.73 seconds 34452 kilobytes java Unique
+Biased 100k: 
+2.69 seconds 37160 kilobytes java Unique
+Mixed 100k: 
+18.82 seconds 38044 kilobytes java Unique
+Random 100k: 
+40.47 seconds 43252 kilobytes java Unique
+
+----------Problem 2: Unique.java TransposeArraySet.java
+$ sudo ./unique.sh
+Biased 1k:
+0.14 seconds 27060 kilobytes java Unique
+Mixed 1k:
+0.15 seconds 27092 kilobytes java Unique
+Random 1k:
+0.28 seconds 28040 kilobytes java Unique
+Biased 10k:
+0.37 seconds 33908 kilobytes java Unique
+Mixed 10k:
+0.34 seconds 33012 kilobytes java Unique
+Random 10k: 
+0.35 seconds 34124 kilobytes java Unique
+Biased 100k: 
+0.79 seconds 36056 kilobytes java Unique
+Mixed 100k: 
+3.66 seconds 41204 kilobytes java Unique
+Random 100k: 
+8.50 seconds 43116 kilobytes java Unique
+
+-------Problem 2: Jaybee MovetoFrontListSet TransposeArraySet
+java -jar jaybee.jar AdaptiveSetsBench
+insertLinearMovetoFrontListSet	     50000	     23435 ns/op	       112 B/op
+ insertLinearTransposeArraySet	     50000	     23045 ns/op	        85 B/op
+insertRandomMovetoFrontListSet	     50000	     35096 ns/op	        46 B/op
+ insertRandomTransposeArraySet	     50000	     36379 ns/op	       -24 B/op
+lookupLinearMovetoFrontListSet	    100000	     24279 ns/op	       153 B/op
+ lookupLinearTransposeArraySet	     50000	     28453 ns/op	      1250 B/op
+lookupRandomMovetoFrontListSet	    100000	     23155 ns/op	       147 B/op
+ lookupRandomTransposeArraySet	     50000	     31277 ns/op	       953 B/op
+removeRandomMovetoFrontListSet	     30000	     38465 ns/op	      -978 B/op
+ removeRandomTransposeArraySet	     30000	     49295 ns/op	       -69 B/op
+ 
+ ---------Problem 2 Writeup
+ 

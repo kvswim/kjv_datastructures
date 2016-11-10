@@ -1,0 +1,77 @@
+Kyle Verdeyen
+kverdey1@jhu.edu
+Assignment 7 Readme
+
+
+-------Problem 1: BasicSetsBench.java
+$ sudo java -jar jaybee.jar BasicSetsBench
+insertLinearArraySet	     50000	     29713 ns/op	        96 B/op
+ insertLinearListSet	     50000	     22454 ns/op	       112 B/op
+insertRandomArraySet	     50000	     28636 ns/op	       -32 B/op
+ insertRandomListSet	     50000	     35813 ns/op	        24 B/op
+lookupLinearArraySet	    100000	     22397 ns/op	      1230 B/op
+ lookupLinearListSet	     50000	     27927 ns/op	       239 B/op
+lookupRandomArraySet	     50000	     22820 ns/op	      1028 B/op
+ lookupRandomListSet	     50000	     31338 ns/op	       377 B/op
+removeRandomArraySet	     30000	     45516 ns/op	      -330 B/op
+ removeRandomListSet	     30000	     49479 ns/op	       540 B/op
+
+
+ -----Problem 1: Unique.java Biased 1k
+ $ sudo ./xtime java Unique<biased1k.txt >/dev/null
+0.13 seconds 22888 kilobytes java Unique
+ 
+ -------Problem 1: Unique.java Mixed 1k
+ $ sudo ./xtime java Unique<mixed1k.txt >/dev/null
+0.16 seconds 23216 kilobytes java Unique
+ 
+ 
+ -------Problem 1: Unique.java Random 1k
+ $ sudo ./xtime java Unique<random1k.txt >/dev/null
+0.17 seconds 27020 kilobytes java Unique
+ 
+ 
+ -------Problem 1: Unique.java Biased 10k
+ $ sudo ./xtime java Unique<biased10k.txt >/dev/null
+0.22 seconds 32568 kilobytes java Unique
+ 
+
+ -------Problem 1: Unique.java Mixed 10k
+ $ sudo ./xtime java Unique<mixed10k.txt >/dev/null
+0.28 seconds 34084 kilobytes java Unique
+ 
+ --------Problem 1: Unique.java Random 10k
+ $ sudo ./xtime java Unique<random10k.txt >/dev/null
+0.39 seconds 34400 kilobytes java Unique
+ 
+ 
+ -------Problem 1: Unique.java Biased 100k
+ $ sudo ./xtime java Unique<biased100k.txt >/dev/null
+0.76 seconds 37252 kilobytes java Unique
+ 
+ 
+ -------Problem 1: Unique.java Mixed 100k
+ $ sudo ./xtime java Unique<mixed100k.txt >/dev/null
+3.38 seconds 40576 kilobytes java Unique
+ 
+ 
+ --------Problem 1: Unique.java Random 100k
+ $ sudo ./xtime java Unique<random100k.txt >/dev/null
+8.29 seconds 43092 kilobytes java Unique
+
+---------Problem 1 writeup
+BasicSetsBench is testing insert, lookup, and remove of linear and random
+list sets and array sets. The test is for comparison of list sets and array sets. 
+We can see from the data that for linear insertion, arrays take longer than lists.
+This is probably because the list only needs to create a new node, but the array
+needs to grow if it is full. For random insertions, arrays take less time than lists,
+possibly due to lists requiring more assignments between nodes. For both linear and random
+lookups, arrays have the advantage because the find method does not need to assign a new 
+node during each run of the loop, only needing to check the array position based on an int.  
+Running the test multiple times, the remove flip flops or is nearly the same for both sets.
+
+Unique.java times ArraySet insertion times for different sizes and randomness bias of 
+data sets. It's called Unique because only unique numbers will be added to the set. 
+Insert first checks if the number is already in the set and breaks if it finds the #.
+More random data (e.g. more unique numbers) takes more time to insert than less random
+(e.g. more repetition) numbers. 

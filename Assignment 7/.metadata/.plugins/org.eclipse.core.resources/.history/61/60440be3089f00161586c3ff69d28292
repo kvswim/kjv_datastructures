@@ -1,0 +1,79 @@
+import com.github.phf.jb.Bench;
+import com.github.phf.jb.Bee;
+import java.util.Random;
+public class PriorityQueuesBench {
+    private static final int SIZE = 100;
+    private static final Random RAND = new Random();
+    private PriorityQueuesBench() {}
+    //need to test insert, remove, find
+    //private static void 
+    private static void insertLinear(PriorityQueue<Integer> s) {
+        for (int i = 0; i < SIZE; i++) {
+            s.insert(i);
+        }
+    }
+
+    // Insert a number of "random" ints into the given set.
+    private static void insertRandom(PriorityQueue<Integer> s) {
+        for (int i = 0; i < SIZE; i++) {
+            s.insert(RAND.nextInt(SIZE * 4));
+        }
+    }
+    
+    /*@Bench
+    public static void insertLinearBinaryHeapPriorityQueue(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            PriorityQueue<Integer> s = new BinaryHeapPriorityQueue<>();
+            b.start();
+            insertLinear(s);
+        }
+    }
+    @Bench
+    public static void insertRandomBinaryHeapPriorityQueue(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            PriorityQueue<Integer> s = new BinaryHeapPriorityQueue<>();
+            b.start();
+            insertRandom(s);
+        }
+    }
+    @Bench
+    public static void removeLinearBinaryHeapPriorityQueue(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            PriorityQueue<Integer> s = new BinaryHeapPriorityQueue<>();
+            insertLinear(s);
+            b.start();
+            s.remove();
+        }
+    }*/
+    @Bench
+    public static void insertLinearSortedArrayPriorityQueue(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            PriorityQueue<Integer> s = new SortedArrayPriorityQueue<>();
+            b.start();
+            insertLinear(s);
+        }
+    }
+    @Bench
+    public static void insertRandomSortedArrayPriorityQueue(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            PriorityQueue<Integer> s = new SortedArrayPriorityQueue<>();
+            b.start();
+            insertRandom(s);
+        }
+    }
+    @Bench
+    public static void removeLinearSortedArrayPriorityQueue(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            PriorityQueue<Integer> s = new SortedArrayPriorityQueue<>();
+            insertLinear(s);
+            b.start();
+            s.remove();
+        }
+    }
+}

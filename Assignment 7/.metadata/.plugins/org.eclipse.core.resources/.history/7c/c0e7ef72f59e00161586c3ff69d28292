@@ -1,0 +1,161 @@
+import com.github.phf.jb.Bench;
+import com.github.phf.jb.Bee;
+
+import java.util.Random;
+
+/**
+ * Compare performance of TransposeArraySet and MovetoFrontListSet.
+ */
+public final class AdaptiveSetsBench {
+    private static final int SIZE = 100;
+    private static final Random RAND = new Random();
+
+    private AdaptiveSetsBench() {}
+
+    // First some basic "compound operations" to benchmark. Note that each
+    // of these is carefully dimensioned (regarding the range of elements)
+    // to allow combining them.
+
+    // Insert a number of "consecutive" strings into the given set.
+    private static void insertLinear(Set<String> s) {
+        for (int i = 0; i < SIZE; i++) {
+            s.insert(Integer.toString(i));
+        }
+    }
+
+    // Insert a number of "random" strings into the given set.
+    private static void insertRandom(Set<String> s) {
+        for (int i = 0; i < SIZE; i++) {
+            s.insert(Integer.toString(RAND.nextInt(SIZE * 4)));
+        }
+    }
+
+    // Remove a number of "random" strings from the given set.
+    private static void removeRandom(Set<String> s) {
+        for (int i = 0; i < SIZE; i++) {
+            s.remove(Integer.toString(RAND.nextInt(SIZE * 2)));
+        }
+    }
+
+    // Lookup a number of "consecutive" strings in the given set.
+    private static void lookupLinear(Set<String> s) {
+        for (int i = 0; i < SIZE; i++) {
+            boolean x = s.has(Integer.toString(i));
+        }
+    }
+
+    // Lookup a number of "random" strings in the given set.
+    private static void lookupRandom(Set<String> s) {
+        for (int i = 0; i < SIZE; i++) {
+            boolean x = s.has(Integer.toString(RAND.nextInt(SIZE)));
+        }
+    }
+
+    // Now the benchmarks we actually want to run.
+
+    @Bench
+    public static void insertLinearTransposeArraySet(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Set<String> s = new TransposeArraySet<>();
+            b.start();
+            insertLinear(s);
+        }
+    }
+
+    @Bench
+    public static void insertLinearMovetoFrontListSet(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Set<String> s = new MovetoFrontMovetoFrontListSet<>();
+            b.start();
+            insertLinear(s);
+        }
+    }
+
+    @Bench
+    public static void insertRandomTransposeArraySet(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Set<String> s = new TransposeArraySet<>();
+            b.start();
+            insertRandom(s);
+        }
+    }
+
+    @Bench
+    public static void insertRandomMovetoFrontListSet(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Set<String> s = new MovetoFrontListSet<>();
+            b.start();
+            insertRandom(s);
+        }
+    }
+
+    @Bench
+    public static void removeRandomTransposeArraySet(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Set<String> s = new TransposeArraySet<>();
+            insertRandom(s);
+            b.start();
+            removeRandom(s);
+        }
+    }
+
+    @Bench
+    public static void removeRandomMovetoFrontListSet(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Set<String> s = new MovetoFrontListSet<>();
+            insertRandom(s);
+            b.start();
+            removeRandom(s);
+        }
+    }
+
+    @Bench
+    public static void lookupLinearTransposeArraySet(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Set<String> s = new TransposeArraySet<>();
+            insertLinear(s);
+            b.start();
+            lookupLinear(s);
+        }
+    }
+
+    @Bench
+    public static void lookupLinearMovetoFrontListSet(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Set<String> s = new MovetoFrontListSet<>();
+            insertLinear(s);
+            b.start();
+            lookupLinear(s);
+        }
+    }
+
+    @Bench
+    public static void lookupRandomTransposeArraySet(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Set<String> s = new TransposeArraySet<>();
+            insertLinear(s);
+            b.start();
+            lookupRandom(s);
+        }
+    }
+
+    @Bench
+    public static void lookupRandomMovetoFrontListSet(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Set<String> s = new MovetoFrontListSet<>();
+            insertLinear(s);
+            b.start();
+            lookupRandom(s);
+        }
+    }
+}

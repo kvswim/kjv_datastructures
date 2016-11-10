@@ -1,0 +1,9 @@
+import com.github.phf.jb.Bench;
+import com.github.phf.jb.Bee;
+import java.util.Random;
+public class PriorityQueuesBench {
+    private static final int SIZE = 100;
+    private static final Random RAND = new Random();
+    private PriorityQueuesBench() {}
+    
+}

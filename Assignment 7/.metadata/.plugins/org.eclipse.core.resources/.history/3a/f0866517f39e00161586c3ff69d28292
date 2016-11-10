@@ -1,0 +1,143 @@
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+
+public class MovetoFrontListSet<T> implements Set<T> {
+    private static class Node<T> {
+        T data;
+        Node<T> next;
+        Node<T> prev;
+    }
+
+    private Node<T> head;
+    private int version;
+
+    private class SetIterator implements Iterator<T> {
+        private Node<T> current;
+        private int version;
+
+        SetIterator() {
+            this.current = MovetoFrontListSet.this.head;
+            this.version = MovetoFrontListSet.this.version;
+        }
+
+        private void checkVersion() throws ConcurrentModificationException {
+            if (this.version != MovetoFrontListSet.this.version) {
+                throw new ConcurrentModificationException();
+            }
+        }
+
+        @Override
+        public boolean hasNext() {
+            this.checkVersion();
+            return this.current != null;
+        }
+
+        @Override
+        public T next() {
+            this.checkVersion();
+            T t = this.current.data;
+            this.current = this.current.next;
+            return t;
+        }
+
+        @Override
+        public void remove() {
+            this.checkVersion();
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    private Node<T> find(T t) {
+        for (Node<T> n = this.head; n != null; n = n.next) {
+            System.out.println("checked");
+            if (n.data.equals(t)) {
+                System.out.println("found a match");
+                //connecting the surrounding nodes together
+                if (n.prev == null) {
+                    System.out.println("About to return the head");
+                    return n;
+                } else if (n.next == null) {
+                    n.prev.next = null;
+                    
+                } else {
+                    n.next.prev = n.prev;
+                    n.prev.next = n.next;
+                }
+                   
+                n.next = this.head;
+                n.prev = null;
+                this.head.prev = n;
+                System.out.println("About to return the new head");
+                return n;
+
+                
+                //                if (n.prev != null) {  //not the head
+//                    if (n.next != null) {  //not the tail
+//                        n.prev.next = n.next;
+//                    }
+//                } else {  //is the head
+//                    return n;
+//                }
+//                if (n.next != null) { //is not the tail
+//                    n.next.prev = n.prev;
+//                } else {            //is the tail
+//                    n.prev.next = null;
+//                    n.next = this.head;
+//                    n.prev = null;
+//                    this.head.prev = n;
+//                    return n;
+//                }
+                
+                //then setting the node in question to the head
+//                n.next = this.head;
+//                n.prev = null;
+//                this.head.prev = n;
+//                return n;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void insert(T t) {
+        if (this.has(t)) {
+            return;
+        }
+        Node<T> n = new Node<T>();
+        n.data = t;
+        n.next = this.head;
+        n.prev = null;
+        if (this.head != null) {
+            this.head.prev = n;
+        }
+        this.head = n;
+        this.version++;
+    }
+
+    @Override
+    public void remove(T t) {
+        Node<T> position = this.find(t);
+        if (position == null) {
+            return;
+        }
+        if (position.next != null) {
+            position.next.prev = position.prev;
+        }
+        if (position.prev != null) {
+            position.prev.next = position.next;
+        } else {
+            this.head = position.next;
+        }
+        this.version++;
+    }
+
+    @Override
+    public boolean has(T t) {
+        return this.find(t) != null;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new SetIterator();
+    }
+}

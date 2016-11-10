@@ -1,0 +1,16 @@
+import com.github.phf.jb.Bench;
+import com.github.phf.jb.Bee;
+import java.util.Comparator;
+import java.util.Random;
+
+/**
+ * Compare performance of ArraySet and ListSet.
+ */
+public final class PriorityQueuesBench {
+    private static final int SIZE = 100;
+    private static final Random RAND = new Random();
+
+    private PriorityQueuesBench() {}
+
+    
+}
