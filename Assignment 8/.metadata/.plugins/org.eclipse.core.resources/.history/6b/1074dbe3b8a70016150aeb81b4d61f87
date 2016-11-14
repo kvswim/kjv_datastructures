@@ -1,0 +1,17 @@
+
+/**TreapMapTestBase.java.
+ * Kyle Verdeyen
+ * kverdey1@jhu.edu
+ * @author root
+ *
+ */
+public class TreapMapTestBase extends MapTestBase{
+
+/* (non-Javadoc)
+ * @see MapTestBase#createMap()
+ */
+@Override
+protected TreapMap<Integer, Integer> createMap(){
+    return new TreapMap<>();
+}
+}

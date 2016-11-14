@@ -1,0 +1,8 @@
+
+public class BinarySearchTreeMapBase extends MapTestBase{
+
+@Override
+protected BinarySearchTreeMap<Integer, Integer> createMap(){
+    return new BinarySearchTreeMap<>();
+}
+}

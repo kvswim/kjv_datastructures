@@ -1,0 +1,19 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+import org.junit.Before;
+import org.junit.Test;
+
+
+public abstract class MapTestBase {
+    private Map<Integer, Integer> map;
+    protected abstract Map<Integer, Integer> createMap();
+    @Before
+    public void setupMap() {
+        map = this.createMap();
+    }
+    @Test
+    public void test() {
+        fail("Not yet implemented");
+    }
+
+}

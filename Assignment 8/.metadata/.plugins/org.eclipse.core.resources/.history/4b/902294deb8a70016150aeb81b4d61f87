@@ -1,0 +1,8 @@
+
+public class TreapMapTestBase extends MapTestBase{
+
+@Override
+protected TreapMap<Integer, Integer> createMap(){
+    return new TreapMap<>();
+}
+}

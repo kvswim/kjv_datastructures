@@ -1,0 +1,30 @@
+Kyle Verdeyen
+kverdey1@jhu.edu
+Assignment 8 README
+
+Problem 1: Words.java Jaybee
+Average taken over 4 runs.
+Biased (50%):
+	1k: 0.2675 sec, 29282kb
+	10k: 0.4325 sec, 34912kb
+	100k: 1.5075 sec, 40253kb
+	500k: 4.155 sec, 57844kb
+Sorted (0%):
+	1k: 0.32 sec, 28775kb
+	10k: 0.4875 sec, 35989kb
+	100k: 1.3725 sec, 43169kb
+	500k: 3.235 sec, 85892kb
+Random (0%):
+	1k: 0.27 sec, 30898kb
+	10k: 0.4725 sec, 36149kb
+	100k: 1.555 sec, 44144kb
+	500k: 5.4175 sec, 86824kb
+Since the input files vary widely, memory usage can be ignored (only noting the
+fact that more input = more memory usage). We can also see that for small n, 
+(1-10k) the different data sets don't have much time difference. It is only with
+large n (100k, 500k) that we can see a pattern more clearly. The sorted list
+takes the least amount of time because the insertions are in order and the tree
+will only be root-right-right-right... The biased set is next because there are
+some (50%) repeating numbers that only need node updates rather than recursively
+rebuilding the tree. Taking the longest time is the random data set, due to 
+having to rebuild the tree for every single insertion.

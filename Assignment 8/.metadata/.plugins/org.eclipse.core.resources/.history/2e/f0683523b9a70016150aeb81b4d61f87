@@ -1,0 +1,8 @@
+
+public class AVLTreeMapTestBase extends MapTestBase{
+
+@Override
+protected AVLTreeMap<Integer, Integer> createMap(){
+    return new AVLTreeMap<>();
+}
+}

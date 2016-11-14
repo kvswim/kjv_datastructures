@@ -7,4 +7,6 @@
   <fileset name="all" enabled="true" check-config-name="cs226" local="true">
     <file-match-pattern match-pattern="." include-pattern="true"/>
   </fileset>
+  <filter name="DerivedFiles" enabled="true"/>
+  <filter name="UnOpenedFiles" enabled="true"/>
 </fileset-config>

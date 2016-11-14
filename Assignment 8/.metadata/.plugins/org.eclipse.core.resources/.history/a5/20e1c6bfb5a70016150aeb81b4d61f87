@@ -1,0 +1,115 @@
+Kyle Verdeyen
+kverdey1@jhu.edu
+Assignment 8 README
+
+---Problem 1: Words.java (xtime)
+Average taken over 4 runs.
+Biased (50%):
+	1k: 0.2675 sec, 29282kb
+	10k: 0.4325 sec, 34912kb
+	100k: 1.5075 sec, 40253kb
+	500k: 4.155 sec, 57844kb
+Sorted (0%):
+	1k: 0.32 sec, 28775kb
+	10k: 0.4875 sec, 35989kb
+	100k: 1.3725 sec, 43169kb
+	500k: 3.235 sec, 85892kb
+Random (0%):
+	1k: 0.27 sec, 30898kb
+	10k: 0.4725 sec, 36149kb
+	100k: 1.555 sec, 44144kb
+	500k: 5.4175 sec, 86824kb
+Since the input files vary widely, memory usage can be ignored (only noting the
+fact that more input = more memory usage). We can also see that for small n, 
+(1-10k) the different data sets don't have much time difference. It is only with
+large n (100k, 500k) that we can see a pattern more clearly. The sorted list
+takes the least amount of time because the insertions are in order and the tree
+will only be root-right-right-right... and will always append at the end of the
+tree. This doesn't really make much sense since linear insertion (the worst case
+scenario) should take O(n) time while at best O(log(n)). The biased set is next 
+because there are some (50%) repeating numbers that only need node updates,
+rather than recursively rebuilding the tree. Taking the longest time is the
+random data set, due to having to rebuild the tree for every single insertion.
+
+---Problem 1: BinarySearchTreeBench.java (Jaybee)
+      insertLinearBSTM	     30000	     43065 ns/op	        13 B/op
+insertLookupLinearBSTM	     30000	     57465 ns/op	        13 B/op
+insertLookupRandomBSTM	     50000	     26614 ns/op	        55 B/op
+      insertRandomBSTM	    100000	     17669 ns/op	        45 B/op
+insertRemoveLinearBSTM	     30000	     40956 ns/op	        13 B/op
+insertRemoveRandomBSTM	     50000	     30302 ns/op	       132 B/op
+We can see from these results a picture that is more in line with what we expect
+from linear vs. random insertions into the BST. Inserting (+removing) linearly
+takes more time than inserting/removing random numbers because the tree is in a
+more conventional configuration in random. Looking up in a linear tree takes
+much longer than random.
+
+---Problem 2: AVLTreeMap.java (Words.java)
+Memory consumption has been left out as it's not very important to the problem.
+Based on average of 4 runs:
+Biased (50%):
+	1k: 0.2075 sec
+	10k: 0.3475 sec
+	100k: 1.1175 sec
+	500k: 4.28 sec
+Sorted (0%):
+	1k: 0.21 sec
+	10k: 0.425 sec
+	100k: 1.2425 sec
+	500k: 3.7025 sec
+Random (0%):
+	1k: 0.1925 sec
+	10k: 0.39 sec
+	100k: 1.34 sec
+	500k: 5.76 sec
+As we can see, in the case of an AVL tree, we still bench the data sets from
+Sorted>Biased>Random (fastest-slowest). This is not what we have learned in
+lecture, a sorted insertion should be taking the longest time. Although
+accessing a balanced tree is supposed to be faster than unbalanced, we are only
+benchmarking for insertions, hence the balanced tree takes longer to insert into
+because of overhead involved in constant rebalancing. 
+
+---Problem 2: AVLTreeMap.java (BalancedBSTBench.java)
+      insertLinearAVL	     30000	     49777 ns/op	        13 B/op
+insertLookupLinearAVL	     20000	     62892 ns/op	       130 B/op
+insertLookupRandomAVL	     50000	     29077 ns/op	        55 B/op
+      insertRandomAVL	    100000	     20529 ns/op	        55 B/op
+insertRemoveLinearAVL	     30000	     55486 ns/op	        13 B/op
+insertRemoveRandomAVL	     50000	     34805 ns/op	       123 B/op
+We see here that random insertion is much faster than linear insertion, which is
+what we expect. Once again, operations take slightly longer than the unbalanced
+tree due to overhead in rebalancing. And again, looking up random items takes
+much less time than linear lookups. 
+
+---Problem 3: TreapMap.java (Words.java) averaged over 4 runs
+(memory consumption not included)
+Biased (50%):
+	1k: 0.2 sec
+	10k: 0.395 sec
+	100k: 1.365 sec
+	500k: 5.6725 sec
+Sorted (0%):
+	1k: 0.2125 sec
+	10k: 0.4725 sec
+	100k: 1.2425 sec
+	500k: 4.09 sec
+Random (0%):
+	1k: 0.2125 sec
+	10k: 0.515 sec
+	100k: 1.6275 sec
+	500k: 7.195 sec
+We see in the TreapMap that random insertions are the slowest, followed by
+biased data and then sorted data. This is probably because treaps can insert
+sequentially quickly due to the "random" priority structure.
+
+---Problem 3: TreapMap.java (TreapMapBench.java)
+      insertLinearTM	     20000	     59952 ns/op	       323 B/op
+insertLookupLinearTM	     20000	     90723 ns/op	       192 B/op
+insertLookupRandomTM	     10000	    114116 ns/op	       152 B/op
+      insertRandomTM	     20000	     77284 ns/op	       213 B/op
+insertRemoveLinearTM	     20000	    115796 ns/op	        69 B/op
+insertRemoveRandomTM	     10000	    121006 ns/op	       468 B/op
+We see here that random insertions now take longer than linear insertions. 
+This is because of the treap's balancing being done by random priority order and
+no real balancing being done. The computer must traverse the tree in order to
+insert/remove/lookup a random item.

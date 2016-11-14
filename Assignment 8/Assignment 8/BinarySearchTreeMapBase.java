@@ -1,0 +1,13 @@
+
+/**BinarySearchTreeMapBase.java.
+ * Kyle Verdeyen
+ * kverdey1@jhu.edu
+ * @author root
+ *
+ */
+public class BinarySearchTreeMapBase extends MapTestBase {
+    @Override
+protected BinarySearchTreeMap<Integer, Integer> createMap() {
+        return new BinarySearchTreeMap<>();
+    }
+}

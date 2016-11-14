@@ -1,0 +1,14 @@
+
+/**AVLTreeMapTestBase.java.
+ * Kyle Verdeyen
+ * kverdey1@jhu.edu
+ * @author root
+ *
+ */
+public class AVLTreeMapTestBase extends MapTestBase {
+
+    @Override
+protected AVLTreeMap<Integer, Integer> createMap() {
+        return new AVLTreeMap<>();
+    }
+}

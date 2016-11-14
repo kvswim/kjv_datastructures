@@ -1,0 +1,75 @@
+import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+
+
+/**MapTestBase.
+ * Kyle Verdeyen
+ * kverdey1@jhu.edu
+ * @author root
+ *
+ */
+public abstract class MapTestBase {
+    private Map<Integer, Integer> map;
+
+    /**Making checksyle happy.
+     * @return nothing.
+     */
+    protected abstract Map<Integer, Integer> createMap();
+    @Before
+    public void setupMap() {
+        map = this.createMap();
+    }
+    /**Tests that a new map is created with size 0.
+     * 
+     */
+    @Test
+    public void newMapEmpty() {
+        assertEquals(0, map.size());
+    }
+    @Test
+    public void insertWorks() {
+        for(int i=0; i < 10; i++) {
+            map.insert(i, 1);
+        }
+        String string = 
+                "{0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1, 9: 1}";
+        assertEquals(string, map.toString());
+    }
+    @Test
+    public void removeWorks() {
+        for(int i = 0; i < 10; i++) {
+            map.insert(i, 1);
+        }
+        for(int i=0;i<10;i++) {
+            map.remove(i);
+        }
+        assertEquals("{}", map.toString());
+    }
+    /**Tests overwriting of value in key slot (put()). 
+     * Also tests get() by extension.
+     */
+    @Test
+    public void putWorks() {
+        map.insert(1, 1);
+        map.put(1, 3);
+        int i = 3, j = map.get(1);
+        assertEquals(i, j);
+    }
+    @Test
+    public void hasWorks() {
+       for (int i = 0; i <10; i++) {
+           map.insert(i, 1);
+       }
+       boolean t = true;
+       boolean test = false;
+       for(int i=0;i<10;i++) {
+           if(map.has(i)) {
+               test = true;
+           } else {
+               test = false;
+           }
+       }
+       assertEquals(t, test);
+    }
+}

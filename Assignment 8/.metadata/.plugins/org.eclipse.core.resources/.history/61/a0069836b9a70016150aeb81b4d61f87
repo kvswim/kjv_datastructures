@@ -1,0 +1,304 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+/**AVLTreeMap.java.
+ * Kyle Verdeyen
+ * kverdey1@jhu.edu
+ * @author root
+ *
+ * @param <K> keys.
+ * @param <V> values.
+ */
+public class AVLTreeMap<K extends Comparable<? super K>, V>
+    implements OrderedMap<K, V> {
+
+    private class Node {
+        Node left;
+        Node right;
+        K key;
+        V value;
+        int height;
+
+        Node(K k, V v) {
+            this.key = k;
+            this.value = v;
+            height = 0;
+        }
+
+        public String toString() {
+            return "Node<key: " + this.key
+                + "; value: " + this.value
+                + ">";
+        }
+    }
+    private Node root;
+    private StringBuilder stringBuilder;
+    
+    public AVLTreeMap() {
+       this.root = null;
+    }
+    @Override
+    public void insert(K k, V v) throws IllegalArgumentException {
+        this.root = insert(root, k, v);
+        
+    }
+
+    private Node insert(Node n, K k, V v) {
+        if (n == null) {
+            return new Node(k, v);
+        }
+        int cmp = k.compareTo(n.key);
+        if (cmp < 0)
+        {
+            n.left = insert(n.left, k, v);
+            if(height(n.left) - height(n.right) ==2) {
+                if(k.compareTo(n.left.key) < 0) {
+                    n = rotateLeftChild(n);
+                } else {
+                    n = doubleLeftChild(n);
+                }
+            }
+        }
+        else if (cmp > 0) {
+            n.right = insert(n.right,k,v);
+            if(height(n.right) - height(n.left)== 2) {
+                if(k.compareTo(n.right.key) > 0) {
+                    n = rotateRightChild(n);
+                }
+                else {
+                    n = doubleRightChild(n);
+                }
+            }
+        }
+        else {
+            throw new IllegalArgumentException("Duplicate key" + k);
+        }
+        n.height = max(height(n.left), height(n.right)) + 1;
+        return n;
+    }
+    private Node doubleRightChild(Node n) {
+        n.right = rotateLeftChild(n.right);
+        return rotateRightChild(n);
+    }
+    private Node rotateRightChild(Node n) {
+        Node temp = null;
+        try{
+        temp = n.right;
+        n.right = temp.left;
+        temp.left = n;
+        n.height = max(height(n.left), height(n.right)) + 1;
+        temp.height = max(height(temp.right), n.height) + 1;}
+        catch (NullPointerException e) {
+            
+        }
+        return temp;
+    }
+    private Node doubleLeftChild(Node n) {
+        n.left = rotateRightChild(n.left);
+        return rotateLeftChild(n);
+    }
+    private Node rotateLeftChild(Node n) {
+        Node temp = null;
+        try{temp = n.left;
+        n.left = temp.right;
+        temp.right = n;
+        n.height = max(height(n.left), height(n.right)) + 1;
+        temp.height = max(height(temp.left), n.height) + 1;}
+        catch (NullPointerException e) {
+           
+        }
+        return temp;
+    }
+    @Override
+    public V remove(K k) throws IllegalArgumentException {
+        Node n = this.find(k);
+        this.root = remove(k, this.root);
+        return n.value;
+    }
+    
+    private Node remove(K k, Node n) {
+        int right;
+        int left;
+        if (k == null) {
+            throw new IllegalArgumentException("Tried to remove a null key.");
+        }
+        if (k.compareTo(n.key) < 0) {
+            n.left = remove(k, n.left);
+            int x = n.left != null ? n.left.height : 0;
+            if ((n.right != null) && (n.right.height - x >= 2)) {
+                right = n.right.right != null ? n.right.right.height : 0;
+                left = n.right.left != null ? n.right.left.height : 0;
+                if (right >= left) {
+                    n = rotateLeftChild(n);
+                } else {
+                    n = doubleRightChild(n);
+                }
+            }
+        }
+        else if (k.compareTo(n.key) > 0) {
+            n.right = remove(k, n.right);
+            int x = n.right != null ? n.right.height : 0;
+            if((n.left != null) && (n.left.height - x >= 2)) {
+                right = n.left.right != null ? n.left.right.height : 0;
+                left = n.left.left != null ? n.left.left.height : 0;
+                if (left >= right) {
+                    n = rotateRightChild(n);
+                } else {
+                    n = doubleLeftChild(n);
+                }
+            }
+        }
+        else if (n.left != null) {
+            n.key = findMax(n.left).key;
+            remove(n.key, n.left);
+            if ((n.right != null ) && (n.right.height - n.left.height >=2))
+            {
+                right = n.right.right != null ? n.right.right.height : 0;
+                left = n.right.left != null ? n.right.left.height : 0;
+                if (right >= left){
+                    n = rotateLeftChild(n);
+                } else {
+                    n = doubleRightChild(n);
+                }
+            }
+        } else {
+            n = (n.left != null) ? n.left : n.right;
+        }
+        if(n != null) {
+            left = n.left != null ? n.left.height : 0;
+            right = n. right != null ? n.right.height : 0;
+            n.height = Math.max(left, right) + 1;
+        }
+        return n;
+    }
+    private Node findMax(Node n) {
+        if (n == null) {
+            return n;
+        }
+        while (n.right != null) {
+            n = n.right;
+        }
+        return n;
+    }
+    @Override
+    public void put(K k, V v) throws IllegalArgumentException {
+        Node n = this.find(k);
+        n.value = v;
+    }
+
+    @Override
+    public V get(K k) throws IllegalArgumentException {
+        Node n = find(k);
+        if (n != null){
+            return n.value;
+        }
+        else throw new IllegalArgumentException("cannot find key " + k);
+    }
+
+    private Node find(K k) {
+        if (k == null) {
+            throw new IllegalArgumentException("cannot handle null key");
+        }
+        Node n = this.root;
+        while (n != null) {
+            int cmp = k.compareTo(n.key);
+            if (cmp < 0) {
+                n = n.left;
+            } else if (cmp > 0) {
+                n = n.right;
+            } else {
+                return n;
+            }
+        }
+        return null;
+    }
+    @Override
+    public boolean has(K k) {
+        if (k == null) {
+            return false;
+        }
+        return this.find(k) != null;
+    }
+
+    @Override
+    public int size() {
+        return countNodes(root);
+    }
+    private int countNodes(Node n) {
+        if (n == null){ 
+            return 0;
+        }
+        else {
+            int i = 1;
+            i += countNodes(n.left);
+            i += countNodes(n.right);
+            return i;
+        }
+    }
+    private int height(Node n) {
+        return n == null ? -1 : n.height;
+    }
+    private int max(int left, int right) {
+        return left > right ? right : left;
+    }
+    // Recursively add keys from subtree rooted at given node
+    // into the given list.
+    private void iteratorHelper(Node n, List<K> keys) {
+        if (n == null) {
+            return;
+        }
+        this.iteratorHelper(n.left, keys);
+        keys.add(n.key);
+        this.iteratorHelper(n.right, keys);
+    }
+
+    @Override
+    public Iterator<K> iterator() {
+        List<K> keys = new ArrayList<K>();
+        this.iteratorHelper(this.root, keys);
+        return keys.iterator();
+    }
+
+    // If we don't have a StringBuilder yet, make one;
+    // otherwise just reset it back to a clean slate.
+    private void setupStringBuilder() {
+        if (this.stringBuilder == null) {
+            this.stringBuilder = new StringBuilder();
+        } else {
+            this.stringBuilder.setLength(0);
+        }
+    }
+
+    // Recursively append string representations of keys and
+    // values from subtree rooted at given node.
+    private void toStringHelper(Node n, StringBuilder s) {
+        if (n == null) {
+            return;
+        }
+        this.toStringHelper(n.left, s);
+        s.append(n.key);
+        s.append(": ");
+        s.append(n.value);
+        s.append(", ");
+        this.toStringHelper(n.right, s);
+    }
+
+    @Override
+    public String toString() {
+        this.setupStringBuilder();
+        this.stringBuilder.append("{");
+
+        this.toStringHelper(this.root, this.stringBuilder);
+
+        int length = this.stringBuilder.length();
+        if (length > 1) {
+            // If anything was appended at all, get rid of
+            // the last ", " the toStringHelper put in.
+            this.stringBuilder.setLength(length - 2);
+        }
+        this.stringBuilder.append("}");
+
+        return this.stringBuilder.toString();
+}
+}

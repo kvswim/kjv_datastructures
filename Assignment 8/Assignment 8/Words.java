@@ -18,7 +18,7 @@ public final class Words {
      * @param args Command line arguments (ignored).
      */
     public static void main(String[] args) {
-        data = new BinarySearchTreeMap<String, Integer>();
+        data = new TreapMap<String, Integer>();
         Scanner scanner = new Scanner(System.in);
 
         while (scanner.hasNextLine()) {
@@ -44,5 +44,7 @@ public final class Words {
         for (String word: data) {
             System.out.println(word + ": " + data.get(word));
         }
+        //System.out.println(data.toString());
+        scanner.close();
     }
 }

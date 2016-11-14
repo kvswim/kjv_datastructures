@@ -1,0 +1,86 @@
+import java.util.Random;
+import com.github.phf.jb.Bench;
+import com.github.phf.jb.Bee;
+public class BinarySearchTreeBench {
+    private static final int SIZE = 100;
+    private static final Random RAND = new Random();
+    private BinarySearchTreeBench() {}
+    private static void insertLinear(Map<Integer, Integer> m) {
+        for (int i = 0; i < SIZE; i++) {
+            if(m.has(i)){
+                m.put(i, m.get(i) + 1);
+            } else {
+                m.insert(i, 1);
+            }
+        }
+    }
+    private static void insertRandom(Map<Integer, Integer> m) {
+        int temp;
+        for (int i = 0; i < SIZE; i++) {
+            temp = RAND.nextInt(SIZE * 4);
+            if (m.has(temp)) {
+                m.put(temp, m.get(temp) + 1);
+            } else {
+                m.insert(temp, 1);   
+            }
+        }
+    }
+    private static void removeLinear(Map<Integer, Integer> m) {
+        for (int i = 0; i < SIZE; i++) {
+            if (m.has(i)) {
+                m.remove(i);
+            }
+        }
+    }
+    private static void removeRandom(Map<Integer, Integer> m) {
+        int temp;
+        for (int i = 0; i < SIZE; i++) {
+            temp = RAND.nextInt(SIZE * 4);
+            if (m.has(temp)) {
+               m.remove(temp); 
+            }
+        }
+    }
+    @Bench
+    public static void insertLinearBSTM(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Map<Integer, Integer> m = 
+                    new AVLTreeMap<Integer, Integer>();
+            b.start();
+            insertLinear(m);
+        }
+    }
+    @Bench
+    public static void insertRandomBSTM(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Map<Integer, Integer> m = 
+                    new AVLTreeMap<Integer, Integer>();
+            b.start();
+            insertRandom(m);
+        }
+    }
+    @Bench
+    public static void insertRemoveLinearBSTM(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Map<Integer, Integer> m = 
+                    new AVLTreeMap<Integer, Integer>();
+            b.start();
+            insertLinear(m);
+            removeLinear(m);
+        }
+    }
+    @Bench
+    public static void insertRemoveRandomBSTM(Bee b) {
+        for (int n = 0; n < b.reps(); n++) {
+            b.stop();
+            Map<Integer, Integer> m = 
+                    new AVLTreMap<Integer, Integer>();
+            b.start();
+            insertRandom(m);
+            removeRandom(m);
+        }
+    }
+}

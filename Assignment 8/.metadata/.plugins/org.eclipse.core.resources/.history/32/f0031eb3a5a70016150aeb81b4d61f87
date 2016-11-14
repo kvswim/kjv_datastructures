@@ -1,0 +1,61 @@
+Kyle Verdeyen
+kverdey1@jhu.edu
+Assignment 8 README
+
+---Problem 1: Words.java (xtime)
+Average taken over 4 runs.
+Biased (50%):
+	1k: 0.2675 sec, 29282kb
+	10k: 0.4325 sec, 34912kb
+	100k: 1.5075 sec, 40253kb
+	500k: 4.155 sec, 57844kb
+Sorted (0%):
+	1k: 0.32 sec, 28775kb
+	10k: 0.4875 sec, 35989kb
+	100k: 1.3725 sec, 43169kb
+	500k: 3.235 sec, 85892kb
+Random (0%):
+	1k: 0.27 sec, 30898kb
+	10k: 0.4725 sec, 36149kb
+	100k: 1.555 sec, 44144kb
+	500k: 5.4175 sec, 86824kb
+Since the input files vary widely, memory usage can be ignored (only noting the
+fact that more input = more memory usage). We can also see that for small n, 
+(1-10k) the different data sets don't have much time difference. It is only with
+large n (100k, 500k) that we can see a pattern more clearly. The sorted list
+takes the least amount of time because the insertions are in order and the tree
+will only be root-right-right-right... and will always append at the end of the
+tree. This doesn't really make much sense since linear insertion (the worst case
+scenario) should take O(n) time while at best O(log(n)). The biased set is next 
+because there are some (50%) repeating numbers that only need node updates,
+rather than recursively rebuilding the tree. Taking the longest time is the
+random data set, due to having to rebuild the tree for every single insertion.
+
+---Problem 1: BinarySearchTreeBench.java (Jaybee)
+insertLinearBSTM	     30000	     42025 ns/op	        13 B/op
+insertRandomBSTM	    100000	     16862 ns/op	        39 B/op
+insertRemoveLinearBSTM	     50000	     38848 ns/op	        60 B/op
+insertRemoveRandomBSTM	     50000	     29573 ns/op	       132 B/op
+We can see from these results a picture that is more in line with what we expect
+from linear vs. random insertions into the BST. Inserting (+removing) linearly
+takes more time than inserting/removing random numbers because the tree is in a
+more conventional configuration in random.  
+
+---Problem 2: AVLTreeMap.java (Words.java)
+Memory consumption has been left out as it's not very important to the problem.
+Based on average of 4 runs:
+Biased (50%):
+	1k: 0.2075 sec
+	10k: 0.3475 sec
+	100k: 1.1175 sec
+	500k: 4.28 sec
+Sorted (0%):
+	1k: 0.21 sec
+	10k: 0.425 sec
+	100k: 1.2425 sec
+	500k: 3.7025 sec
+Random (0%):
+	1k: 0.1925 sec
+	10k: 0.39 sec
+	100k: 1.34 sec
+	500k: 5.76 sec
