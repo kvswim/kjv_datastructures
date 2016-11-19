@@ -1,0 +1,7 @@
+/**
+ * @author root
+ *
+ */
+public class HashMapTestBase extends MapTestBase {
+
+}

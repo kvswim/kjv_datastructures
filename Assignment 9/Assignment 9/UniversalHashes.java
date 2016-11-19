@@ -30,7 +30,8 @@ public final class UniversalHashes {
     }
 
     // Separate method because of anonymous class restrictions.
-    private static HashFunction prime(final int a, final int b, final int p, final int m) {
+    private static HashFunction
+        prime(final int a, final int b, final int p, final int m) {
         return new HashFunction() {
             public int hash(int i) {
                 int u = i & ~(1 << 31); // clear high bit
@@ -67,7 +68,8 @@ public final class UniversalHashes {
     }
 
     // Separate method because of anonymous class restrictions.
-    private static HashFunction power(final int a, final int b, final int w, final int bigM) {
+    private static HashFunction
+        power(final int a, final int b, final int w, final int bigM) {
         return new HashFunction() {
             public int hash(int i) {
                 return (a * i + b) >>> (w - bigM); // ever clear high?

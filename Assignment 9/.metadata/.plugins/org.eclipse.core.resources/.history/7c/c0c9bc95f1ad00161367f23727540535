@@ -1,0 +1,5 @@
+import com.github.phf.jb.Bench;
+import com.github.phf.jb.Bee;
+public final class MapBench {
+
+}

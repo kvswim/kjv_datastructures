@@ -30,6 +30,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
             this.value = v;
         }
     }
+
     private List<Entry> data;
 
     /**

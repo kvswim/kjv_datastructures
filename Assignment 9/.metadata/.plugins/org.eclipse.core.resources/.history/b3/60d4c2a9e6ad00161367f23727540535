@@ -1,0 +1,36 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+public abstract class MapTestBase {
+    private Map<String, Integer> map;
+    protected abstract Map<String, Integer> createMap();
+
+    @Before
+    public void setupMap() {
+        map = this.createMap();
+    }
+    @Test
+    public void testInitialLength() {
+        assertEquals(0, map.size());
+    }
+    @Test
+    public void testInsert() {
+        map.insert("HashMap", 1);
+        int result = map.get("HashMap");
+        assertEquals(1, result);
+    }
+    @Test
+    public void testHash() {
+    }
+}

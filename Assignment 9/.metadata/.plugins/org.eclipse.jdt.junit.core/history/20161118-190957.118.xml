@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="New_configuration" project="Assignment 9" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="SimpleMapTestBase" time="0.005">
+    <testcase name="testInitialLength" classname="SimpleMapTestBase" time="0.002"/>
+    <testcase name="testInsert" classname="SimpleMapTestBase" time="0.002"/>
+    <testcase name="testHash" classname="SimpleMapTestBase" time="0.001"/>
+  </testsuite>
+  <testsuite name="HashMapTestBase" time="0.002">
+    <testcase name="testInitialLength" classname="HashMapTestBase" time="0.001"/>
+    <testcase name="testInsert" classname="HashMapTestBase" time="0.001"/>
+    <testcase name="testHash" classname="HashMapTestBase" time="0.0"/>
+  </testsuite>
+</testrun>

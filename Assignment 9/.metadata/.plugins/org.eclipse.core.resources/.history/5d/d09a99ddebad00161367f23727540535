@@ -1,0 +1,47 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
+
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * 
+ */
+
+/**
+ * @author root
+ *
+ */
+public abstract class MapTestBase {
+    private Map<String, Integer> map;
+    protected abstract Map<String, Integer> createMap();
+
+    @Before
+    public void setupMap() {
+        map = this.createMap();
+    }
+    @Test
+    public void testInitialLength() {
+        assertEquals(0, map.size());
+    }
+    @Test
+    public void testInsert() {
+        map.insert("HashMap", 1);
+        int result = map.get("HashMap");
+        assertEquals(1, result);
+    }
+    @Test
+    public void testHash() {
+        int arr1[] = { 0, 1, 2, 3, 4, 5 };
+        int arr2[] = { 5, 10, 20, 30, 40, 50 };
+         
+        // copies an array from the specified source array
+        System.arraycopy(arr1, 0, arr2, 0, arr2.length);
+        for (int i = 0; i < arr2.length; i++) {
+            System.out.println(arr2[i]);
+            
+        }
+    }
+}

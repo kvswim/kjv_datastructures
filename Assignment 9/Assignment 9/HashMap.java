@@ -11,19 +11,32 @@ import java.util.Iterator;
  * @param <V> value.
  */
 public class HashMap<K, V> implements Map<K, V> {
-    private class Node {
+    private static class Node<K, V> {
         int hash;
         K key;
         V value;
-        Node next;
+        Node<K, V> next;
+
         Node(K k, V v) {
             key = k;
             value = v;
             next = null;
-            hash = hash(k);
+            hash = hash(key);
+        }
+
+        private int hash(K k) {
+            int hash2 = k.hashCode();
+            hash2 ^= hash >>> 16; //shift right zero fill
+            hash2 *= 0x85ebca6b;
+            hash2 ^= hash >>> 13;
+            hash2 *= 0xc2b2ae35;
+            hash2 ^= hash >>> 16;
+            return hash2;
         }
     }
-    Node[] nodes = (Node[]) new Object[256];
+
+    Node<K, V>[] nodes = new Node[16];
+
     @Override
     public Iterator<K> iterator() {
         // TODO Auto-generated method stub
@@ -32,16 +45,17 @@ public class HashMap<K, V> implements Map<K, V> {
 
     @Override
     public void insert(K k, V v) throws IllegalArgumentException {
-        Node n = this.find(k);
+        //try {
+        Node<K, V> n = this.find(k);
         if (n != null) {
             throw new IllegalArgumentException("Duplicate key " + k);
         }
-        n = new Node(k, v);
+        n = new Node<K, V>(k, v);
         int index = hashIndex(hash(k));
         if (nodes[index] == null) {
-            nodes[index] = n;
+            nodes[index] = (Node<K, V>) n;
         } else {
-            Node tempnext = nodes[index].next;
+            Node<K, V> tempnext = nodes[index].next;
             if (tempnext == null) {
                 nodes[index].next = n;
             } else {
@@ -53,29 +67,52 @@ public class HashMap<K, V> implements Map<K, V> {
                 }
             }
         }
+        //}
+        //catch (NullPointerException e) {
+        //    resizeArray(nodes);
+        //}
     }
 
-    private Node find(K k) {
+    private void resizeArray(Node<K, V>[] input) {
+        nodes = new Node[input.length * 2];
+        System.arraycopy(input, 0, nodes, 0, input.length);
+        for (int i = input.length; i < nodes.length; i++) {
+            nodes[i] = null;
+        }
+    }
+
+    private Node<K, V> find(K k) {
         if (k == null) {
             throw new IllegalArgumentException("Null key");
         }
-        Node temp = null;
-        Node nextnode;
+        Node<K, V> temp = null;
+        Node<K, V> nextnode;
         int hash = hash(k);
         int index = hashIndex(hash);
-        nextnode = nodes[index].next;
-        if (nodes[index].hash == hash) {
-            temp = nodes[index];
-        } else while (nextnode != null) {
-            if (nextnode.hash == hash) {
-                temp = nextnode;
-            }
-            nextnode = nextnode.next;
+        try {
+            nextnode = (Node<K, V>) nodes[index].next;
+        } catch (NullPointerException e) {
+            nextnode = null;
         }
-        return temp;
+        try {
+            if (nodes[index].hash == hash) {
+                temp = nodes[index];
+            } else {
+                while (nextnode != null) {
+                    if (nextnode.hash == hash) {
+                        temp = nextnode;
+                    }
+                    nextnode = (Node<K, V>) nextnode.next;
+                }
+            }
+        } catch (NullPointerException e) {
+            temp = null;
+        }
+        return (Node<K, V>) temp;
     }
-    private Node findForSure(K k) {
-        Node temp = this.find(k);
+
+    private Node<K, V> findForSure(K k) {
+        Node<K, V> temp = (Node<K, V>) this.find(k);
         if (temp == null) {
             throw new IllegalArgumentException("Can't find key " + k);
         }
@@ -89,8 +126,8 @@ public class HashMap<K, V> implements Map<K, V> {
      */
     @Override
     public V remove(K k) throws IllegalArgumentException {
-        Node temp = this.findForSure(k);
-        V v = temp.value;
+        Node<K, V> temp = this.findForSure(k);
+        V v = (V) temp.value;
         temp.hash = 0;
         temp.key = null;
         temp.value = null;
@@ -99,11 +136,11 @@ public class HashMap<K, V> implements Map<K, V> {
 
     @Override
     public void put(K k, V v) throws IllegalArgumentException {
-        Node temp = this.findForSure(k);
+        Node<K, V> temp = this.findForSure(k);
         temp.value = v;
     }
 
-    
+
     /**Hashing function. Adaptation based on Murmurhash3 (orig. C++).
      * Takes Java's internal hashcode (data into int), then
      * performs bit shifts and byte multiplication to put
@@ -122,14 +159,15 @@ public class HashMap<K, V> implements Map<K, V> {
         hash ^= hash >>> 16;
         return hash;
     }
-    
+
     private int hashIndex(int x) {
-        return x & (Integer.MAX_VALUE - 1);
+        return x & (nodes.length - 1);
     }
+
     @Override
     public V get(K k) throws IllegalArgumentException {
-        Node n = this.findForSure(k);
-        return n.value;
+        Node<K, V> n = this.findForSure(k);
+        return (V) n.value;
     }
 
     @Override
@@ -142,8 +180,13 @@ public class HashMap<K, V> implements Map<K, V> {
 
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        int counter = 0;
+        for (int i = 0; i < nodes.length; i++) {
+            if (nodes[i] != null) {
+                counter++;
+            }
+        }
+        return counter;
     }
 
 }
