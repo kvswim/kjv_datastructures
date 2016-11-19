@@ -22,29 +22,21 @@ public class HashMap<K, V> implements Map<K, V> {
             value = v;
             next = null;
             hash = hash(key);
-//            System.out.println("hash is: " + hash);
         }
 
         private int hash(K k) {
-            int hash = k.hashCode();
-            hash ^= hash >>> 16; //shift right zero fill
-            hash *= 0x85ebca6b;
-            hash ^= hash >>> 13;
-            hash *= 0xc2b2ae35;
-            hash ^= hash >>> 16;
-            return hash;
+            int hash2 = k.hashCode();
+            hash2 ^= hash >>> 16; //shift right zero fill
+            hash2 *= 0x85ebca6b;
+            hash2 ^= hash >>> 13;
+            hash2 *= 0xc2b2ae35;
+            hash2 ^= hash >>> 16;
+            return hash2;
         }
     }
 
-    Node<K, V>[] nodes;
-    
-    public HashMap() {
-        nodes = new Node[512];
-        for (int i = 0; i < 512; ++i) {
-            nodes[i] = null;
-        }
-    }
-    
+    Node<K, V>[] nodes = new Node[16];
+
     @Override
     public Iterator<K> iterator() {
         // TODO Auto-generated method stub
@@ -56,17 +48,12 @@ public class HashMap<K, V> implements Map<K, V> {
         //try {
         Node<K, V> n = this.find(k);
         if (n != null) {
-            //throw new IllegalArgumentException("Duplicate key " + k);
-            n.value = v;
-            return;
+            throw new IllegalArgumentException("Duplicate key " + k);
         }
         n = new Node<K, V>(k, v);
-        int hash = hash(k);
-        int index = hashIndex(hash);
-//        System.out.println("insert index: " + index + ", hash: " + hash);
+        int index = hashIndex(hash(k));
         if (nodes[index] == null) {
             nodes[index] = n;
-//            System.out.println("inserted: " + index);
         } else {
             Node<K, V> curr = nodes[index];
             while (curr.next != null) {
@@ -91,13 +78,13 @@ public class HashMap<K, V> implements Map<K, V> {
         //}
     }
 
-//    private void resizeArray(Node<K, V>[] input) {
-//        nodes = new Node[input.length * 2];
-////        System.arraycopy(input, 0, nodes, 0, input.length);
-//        for (int i = input.length; i < nodes.length; i++) {
-//            nodes[i] = null;
-//        }
-//    }
+    private void resizeArray(Node<K, V>[] input) {
+        nodes = new Node[input.length * 2];
+        System.arraycopy(input, 0, nodes, 0, input.length);
+        for (int i = input.length; i < nodes.length; i++) {
+            nodes[i] = null;
+        }
+    }
 
     private Node<K, V> find(K k) {
         if (k == null) {
@@ -107,11 +94,9 @@ public class HashMap<K, V> implements Map<K, V> {
 //        Node<K, V> nextnode;
         int hash = hash(k);
         int index = hashIndex(hash);
-//        System.out.println("index: " + index + ", hash: " + hash);
         Node<K, V> n = nodes[index];
         while (n != null) {
             if (n.hash == hash) {
-//                System.out.println("helllo i found at index: " + index);
                 return n;
             }
             n = n.next;
@@ -189,11 +174,7 @@ public class HashMap<K, V> implements Map<K, V> {
     }
 
     private int hashIndex(int x) {
-        int i = x % (nodes.length - 1);
-        if (i < 0) {
-            return nodes.length - 1 + i;
-        }
-        return i;
+        return x % (nodes.length - 1);
     }
 
     @Override

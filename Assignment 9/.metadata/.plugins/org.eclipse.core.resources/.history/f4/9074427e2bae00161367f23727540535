@@ -22,7 +22,7 @@ public class HashMap<K, V> implements Map<K, V> {
             value = v;
             next = null;
             hash = hash(key);
-//            System.out.println("hash is: " + hash);
+            System.out.println("hash is: " + hash);
         }
 
         private int hash(K k) {
@@ -39,8 +39,8 @@ public class HashMap<K, V> implements Map<K, V> {
     Node<K, V>[] nodes;
     
     public HashMap() {
-        nodes = new Node[512];
-        for (int i = 0; i < 512; ++i) {
+        nodes = new Node[16];
+        for (int i = 0; i < 16; ++i) {
             nodes[i] = null;
         }
     }
@@ -56,17 +56,15 @@ public class HashMap<K, V> implements Map<K, V> {
         //try {
         Node<K, V> n = this.find(k);
         if (n != null) {
-            //throw new IllegalArgumentException("Duplicate key " + k);
-            n.value = v;
-            return;
+            throw new IllegalArgumentException("Duplicate key " + k);
         }
         n = new Node<K, V>(k, v);
         int hash = hash(k);
         int index = hashIndex(hash);
-//        System.out.println("insert index: " + index + ", hash: " + hash);
+        System.out.println("insert index: " + index + ", hash: " + hash);
         if (nodes[index] == null) {
             nodes[index] = n;
-//            System.out.println("inserted: " + index);
+            System.out.println("inserted: " + index);
         } else {
             Node<K, V> curr = nodes[index];
             while (curr.next != null) {
@@ -91,13 +89,13 @@ public class HashMap<K, V> implements Map<K, V> {
         //}
     }
 
-//    private void resizeArray(Node<K, V>[] input) {
-//        nodes = new Node[input.length * 2];
-////        System.arraycopy(input, 0, nodes, 0, input.length);
-//        for (int i = input.length; i < nodes.length; i++) {
-//            nodes[i] = null;
-//        }
-//    }
+    private void resizeArray(Node<K, V>[] input) {
+        nodes = new Node[input.length * 2];
+        System.arraycopy(input, 0, nodes, 0, input.length);
+        for (int i = input.length; i < nodes.length; i++) {
+            nodes[i] = null;
+        }
+    }
 
     private Node<K, V> find(K k) {
         if (k == null) {
@@ -107,11 +105,11 @@ public class HashMap<K, V> implements Map<K, V> {
 //        Node<K, V> nextnode;
         int hash = hash(k);
         int index = hashIndex(hash);
-//        System.out.println("index: " + index + ", hash: " + hash);
+        System.out.println("index: " + index + ", hash: " + hash);
         Node<K, V> n = nodes[index];
         while (n != null) {
             if (n.hash == hash) {
-//                System.out.println("helllo i found at index: " + index);
+                System.out.println("helllo i found at index: " + index);
                 return n;
             }
             n = n.next;

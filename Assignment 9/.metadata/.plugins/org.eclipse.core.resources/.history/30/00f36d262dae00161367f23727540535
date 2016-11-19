@@ -26,7 +26,7 @@ public final class Spell {
         BufferedReader reader = new BufferedReader(file);
 
 //        dictionary = new SimpleMap<String, Integer>();
-        dictionary = new HashMap<String, Integer>();
+//        dictionary = new HashMap<String, Integer>();
         String line;
         while ((line = reader.readLine()) != null) {
             String word = line.trim();

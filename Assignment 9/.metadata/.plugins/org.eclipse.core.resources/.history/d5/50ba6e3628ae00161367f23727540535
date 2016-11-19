@@ -52,7 +52,7 @@ public abstract class MapTestBase {
         map.insert("Hashmap3", 1);
         map.insert("Hashmap4", 1);
         map.insert("Hashmap5", 1);
-        //map.insert("hashmap6", 1);
+        map.insert("hashmap6", 1);
         System.out.println(map.size());
     }
 
