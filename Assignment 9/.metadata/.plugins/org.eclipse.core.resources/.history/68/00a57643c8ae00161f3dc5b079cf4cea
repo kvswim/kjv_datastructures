@@ -60,24 +60,10 @@ public abstract class MapTestBase {
 
     @Test
     public void testPut() {
-//        for (int i = 1; i < 10; i++) {
-//            map.insert(Integer.toString(i), 1);
-//            System.out.println();
-//        }
-        
-        
-        map.insert(Integer.toString(1), 1);
-        map.insert(Integer.toString(2), 1);
-        map.insert(Integer.toString(3), 1);
-        map.insert(Integer.toString(4), 1);
-        map.insert(Integer.toString(5), 1);
-        map.insert(Integer.toString(6), 1);
-        map.insert(Integer.toString(7), 1);
-        map.insert(Integer.toString(8), 1);
-//        map.insert(Integer.toString(9), 1);
-        
-        int v = map.get(Integer.toString(1));
-       
+        for (int i = 1; i < 10; i++) {
+            map.insert(Integer.toString(i), 1);
+        }
+        Object object = Map.get("1");
         for (int i = 1; i < 10; i++) {
             map.put(Integer.toString(i), 2);
         }

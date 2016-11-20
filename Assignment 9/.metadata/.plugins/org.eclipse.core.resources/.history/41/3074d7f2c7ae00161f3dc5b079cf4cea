@@ -87,16 +87,4 @@ public final class MapBench {
             insertLinear(m);
         }
     }
-
-    public static void insertRandomHM(Bee b) {
-        for (int n = 0; n < b.reps(); n++) {
-            b.stop();
-            Map<Integer, Integer> m =
-                new HashMap<Integer, Integer>();
-            b.start();
-            insertRandom(m);
-        }
-    }
-
-    
 }

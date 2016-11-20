@@ -155,9 +155,9 @@ public class HashMap<K, V> implements Map<K, V> {
     }
 
     private int hashIndex(int x) {
-        int i = x % (nodes.length - 1);
+        int i = x % (nodes.length);
         if (i < 0) {
-            return nodes.length - 1 + i;
+            return nodes.length + i;
         }
         return i;
     }

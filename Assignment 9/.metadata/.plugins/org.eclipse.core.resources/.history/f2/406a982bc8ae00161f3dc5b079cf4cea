@@ -43,8 +43,8 @@ public class HashMap<K, V> implements Map<K, V> {
      * Bucket size is fixed at 512.
      */
     public HashMap() {
-        nodes = new Node[256];
-        for (int i = 0; i < 256; ++i) {
+        nodes = new Node[512];
+        for (int i = 0; i < 512; ++i) {
             nodes[i] = null;
         }
     }
@@ -165,7 +165,7 @@ public class HashMap<K, V> implements Map<K, V> {
     @Override
     public V get(K k) throws IllegalArgumentException {
         Node<K, V> n = this.findForSure(k);
-        return n.value;
+        return (V) n.value;
     }
 
     @Override
