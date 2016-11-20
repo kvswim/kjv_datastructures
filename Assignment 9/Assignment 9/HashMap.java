@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 
 /**HashMap.java.
@@ -11,7 +13,7 @@ import java.util.Iterator;
  * @param <V> value.
  */
 public class HashMap<K, V> implements Map<K, V> {
-    private static class Node<K, V> {
+    static class Node<K, V> {
         int hash;
         K key;
         V value;
@@ -22,121 +24,85 @@ public class HashMap<K, V> implements Map<K, V> {
             value = v;
             next = null;
             hash = hash(key);
-//            System.out.println("hash is: " + hash);
         }
 
         private int hash(K k) {
-            int hash = k.hashCode();
-            hash ^= hash >>> 16; //shift right zero fill
-            hash *= 0x85ebca6b;
-            hash ^= hash >>> 13;
-            hash *= 0xc2b2ae35;
-            hash ^= hash >>> 16;
-            return hash;
+            int hash2 = k.hashCode();
+            hash2 ^= hash >>> 16; //shift right zero fill
+            hash2 *= 0x85ebca6b;
+            hash2 ^= hash >>> 13;
+            hash2 *= 0xc2b2ae35;
+            hash2 ^= hash >>> 16;
+            return hash2;
         }
     }
 
-    Node<K, V>[] nodes;
-    
+    final Node<K, V>[] nodes;
+
+    /**Constructor.
+     * Bucket size is fixed at 512.
+     */
     public HashMap() {
         nodes = new Node[512];
         for (int i = 0; i < 512; ++i) {
             nodes[i] = null;
         }
     }
-    
+
     @Override
     public Iterator<K> iterator() {
-        // TODO Auto-generated method stub
-        return null;
+        List<K> keys = new ArrayList<K>();
+        for (int i = 0; i < nodes.length; ++i) {
+            if (nodes[i].next != null) {
+                Node<K, V> curr = nodes[i];
+                while (curr.next != null) {
+                    keys.add(curr.key);
+                    curr = curr.next;
+                }
+            } else {
+                keys.add(nodes[i].key);
+            }
+        }
+        return keys.iterator();
     }
 
     @Override
     public void insert(K k, V v) throws IllegalArgumentException {
-        //try {
         Node<K, V> n = this.find(k);
         if (n != null) {
-            //throw new IllegalArgumentException("Duplicate key " + k);
             n.value = v;
             return;
         }
         n = new Node<K, V>(k, v);
         int hash = hash(k);
         int index = hashIndex(hash);
-//        System.out.println("insert index: " + index + ", hash: " + hash);
         if (nodes[index] == null) {
             nodes[index] = n;
-//            System.out.println("inserted: " + index);
         } else {
             Node<K, V> curr = nodes[index];
             while (curr.next != null) {
                 curr = curr.next;
             }
             curr.next = n;
-//            Node<K, V> tempnext = nodes[index].next;
-//            if (tempnext == null) {
-//                nodes[index].next = n;
-//            } else {
-//                while (tempnext != null) {
-//                    if (tempnext.next == null) {
-//                        tempnext.next = n;
-//                    }
-//                    tempnext = tempnext.next;
-//                }
-//            }
         }
-        //}
-        //catch (NullPointerException e) {
-        //    resizeArray(nodes);
-        //}
     }
 
-//    private void resizeArray(Node<K, V>[] input) {
-//        nodes = new Node[input.length * 2];
-////        System.arraycopy(input, 0, nodes, 0, input.length);
-//        for (int i = input.length; i < nodes.length; i++) {
-//            nodes[i] = null;
-//        }
-//    }
+
 
     private Node<K, V> find(K k) {
         if (k == null) {
             throw new IllegalArgumentException("Null key");
         }
-//        Node<K, V> temp = null;
-//        Node<K, V> nextnode;
         int hash = hash(k);
         int index = hashIndex(hash);
-//        System.out.println("index: " + index + ", hash: " + hash);
         Node<K, V> n = nodes[index];
         while (n != null) {
-            if (n.hash == hash) {
-//                System.out.println("helllo i found at index: " + index);
+            if (n.key == k) {
                 return n;
             }
             n = n.next;
         }
         return null;
-//        try {
-//            nextnode = (Node<K, V>) nodes[index].next;
-//        } catch (NullPointerException e) {
-//            nextnode = null;
-//        }
-//        try {
-//            if (nodes[index].hash == hash) {
-//                temp = nodes[index];
-//            } else {
-//                while (nextnode != null) {
-//                    if (nextnode.hash == hash) {
-//                        temp = nextnode;
-//                    }
-//                    nextnode = (Node<K, V>) nextnode.next;
-//                }
-//            }
-//        } catch (NullPointerException e) {
-//            temp = null;
-//        }
-//        return (Node<K, V>) temp;
     }
 
     private Node<K, V> findForSure(K k) {
@@ -221,4 +187,45 @@ public class HashMap<K, V> implements Map<K, V> {
         return counter;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+//        s.append("{");
+//        for (int i = 0; i < nodes.length - 1; ++i) {
+//            Node<K,V> e = nodes[i];
+//            Node n = nodes[i];
+//            if (nodes[i].next == null) {
+//                while(e.next != null) {
+//                    s.append("" + e.key + ": " + e.value);
+//                    e = e.next;
+//                    if (i < nodes.length - 1) {
+//                        s.append(", ");
+//                    }
+//                }
+//                
+//            } else {
+//                s.append("" + e.key + ": " + e.value);
+//                if (i < nodes.length - 1) {
+//                    s.append(", ");
+//                }
+//            }
+//        }
+//        s.append("}");
+        s.append("{");
+        for (int i = 0; i < nodes.length; i++) {
+            Iterator<K> iter = this.iterator();
+            while (iter.hasNext()) {
+                K key = iter.next();
+                V value = this.get(key);
+                s.append("" + key + ": " + value);
+                s.append(", ");
+            }
+//            s.append("" + e.key + ": " + e.value);
+//            if (i < this.data.size() - 1) {
+//                s.append(", ");
+//            }
+        }
+        s.append("}");
+        return s.toString();
+    }
 }

@@ -1,0 +1,215 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+
+/**HashMap.java.
+ * Kyle Verdeyen
+ * kverdey1@jhu.edu
+ * 600.226
+ * @author root
+ *
+ * @param <K> key.
+ * @param <V> value.
+ */
+public class HashMap<K, V> implements Map<K, V> {
+    static class Node<K, V> {
+        int hash;
+        K key;
+        V value;
+        Node<K, V> next;
+
+        Node(K k, V v) {
+            key = k;
+            value = v;
+            next = null;
+            hash = hash(key);
+        }
+
+        private int hash(K k) {
+            int hash2 = k.hashCode();
+            hash2 ^= hash >>> 16; //shift right zero fill
+            hash2 *= 0x85ebca6b;
+            hash2 ^= hash >>> 13;
+            hash2 *= 0xc2b2ae35;
+            hash2 ^= hash >>> 16;
+            return hash2;
+        }
+    }
+
+    Node<K, V>[] nodes;
+
+    /**Constructor.
+     * Bucket size is fixed at 512.
+     */
+    public HashMap() {
+        this.nodes = new Node[512];
+        for (int i = 0; i < 512; ++i) {
+            this.nodes[i] = null;
+        }
+    }
+
+    @Override
+    public Iterator<K> iterator() {
+        List<K> keys = new ArrayList<K>();
+        for (int i = 0; i < this.nodes.length; ++i) {
+            if (this.nodes[i].next != null) {
+                Node<K, V> curr = nodes[i];
+                while (curr.next != null) {
+                    keys.add(curr.key);
+                    curr = curr.next;
+                }
+            } else {
+                keys.add(this.nodes[i].key);
+            }
+        }
+        return keys.iterator();
+    }
+
+    @Override
+    public void insert(K k, V v) throws IllegalArgumentException {
+        Node<K, V> n = this.find(k);
+        if (n != null) {
+            n.value = v;
+            return;
+        }
+        n = new Node<K, V>(k, v);
+        int hash = hash(k);
+        int index = hashIndex(hash);
+        if (this.nodes[index] == null) {
+            this.nodes[index] = n;
+        } else {
+            Node<K, V> curr = this.nodes[index];
+            while (curr.next != null) {
+                curr = curr.next;
+            }
+            curr.next = n;
+        }
+    }
+
+
+
+    private Node<K, V> find(K k) {
+        if (k == null) {
+            throw new IllegalArgumentException("Null key");
+        }
+        int hash = hash(k);
+        int index = hashIndex(hash);
+        Node<K, V> n = this.nodes[index];
+        while (n != null) {
+            if (n.key == k) {
+                return n;
+            }
+            n = n.next;
+        }
+        return null;
+    }
+
+    private Node<K, V> findForSure(K k) {
+        Node<K, V> temp = (Node<K, V>) this.find(k);
+        if (temp == null) {
+            throw new IllegalArgumentException("Can't find key " + k);
+        }
+        return temp;
+    }
+
+    /**Remove method.
+     * Node is only logically nulled as to not disturb the next
+     * field.
+     * @return v value that was in the key k.
+     */
+    @Override
+    public V remove(K k) throws IllegalArgumentException {
+        Node<K, V> temp = this.findForSure(k);
+        V v = (V) temp.value;
+        temp.hash = 0;
+        temp.key = null;
+        temp.value = null;
+        return v;
+    }
+
+    @Override
+    public void put(K k, V v) throws IllegalArgumentException {
+        Node<K, V> temp = this.findForSure(k);
+        temp.value = v;
+    }
+
+
+    /**Hashing function. Adaptation based on Murmurhash3 (orig. C++).
+     * Takes Java's internal hashcode (data into int), then
+     * performs bit shifts and byte multiplication to put
+     * the given hashcode into a hash with the minimum amount of
+     * collisions. Original algorithm pre-hashes the input
+     * string byte by byte, but ain't nobody got time for that.
+     * @param k key given.
+     * @return x int form of final hash code.
+     */
+    private int hash(K k) {
+        int hash = k.hashCode();
+        hash ^= hash >>> 16; //shift right zero fill
+        hash *= 0x85ebca6b;
+        hash ^= hash >>> 13;
+        hash *= 0xc2b2ae35;
+        hash ^= hash >>> 16;
+        return hash;
+    }
+
+    private int hashIndex(int x) {
+        int i = x % (this.nodes.length - 1);
+        if (i < 0) {
+            return this.nodes.length - 1 + i;
+        }
+        return i;
+    }
+
+    @Override
+    public V get(K k) throws IllegalArgumentException {
+        Node<K, V> n = this.findForSure(k);
+        return (V) n.value;
+    }
+
+    @Override
+    public boolean has(K k) {
+        if (k == null) {
+            return false;
+        }
+        return this.find(k) != null;
+    }
+
+    @Override
+    public int size() {
+        int counter = 0;
+        for (int i = 0; i < this.nodes.length; i++) {
+            if (this.nodes[i] != null) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append("{");
+        for (int i = 0; i < this.nodes.length - 1; ++i) {
+            Node<K,V> e = this.nodes[i];System.out.println(i);
+            if (this.nodes[i].next != null) {
+                while(e.next != null) {
+                    s.append("" + e.key + ": " + e.value);
+                    e = e.next;
+                    if (i < this.nodes.length - 1) {
+                        s.append(", ");
+                    }
+                }
+                
+            } else {
+                s.append("" + e.key + ": " + e.value);
+                if (i < this.nodes.length - 1) {
+                    s.append(", ");
+                }
+            }
+        }
+        s.append("}");
+        return s.toString();
+    }
+}

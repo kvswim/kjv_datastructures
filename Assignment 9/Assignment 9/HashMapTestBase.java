@@ -1,4 +1,6 @@
-/**
+/**HashMapTestBase.java.
+ * Helper file for MapTestBase.
+ * Generates a new HashMap for testing.
  * @author root
  *
  */

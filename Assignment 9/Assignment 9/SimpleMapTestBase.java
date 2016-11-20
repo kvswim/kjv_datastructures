@@ -1,4 +1,6 @@
-/**
+/**SimpleMapTestBase.java.
+ * Helper file for MapTestBase.java.
+ * Generates a new SimpleMap for testing.
  * @author root
  *
  */

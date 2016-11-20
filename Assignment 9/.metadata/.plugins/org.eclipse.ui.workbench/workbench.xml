@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="13" version="2.0">
+<workbench progressCount="23" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="0" y="0">
-<fastViewData fastViewLocation="1024"/>
-<intro standby="true"/>
+<fastViewData fastViewLocation="1024">
+<orientation position="512" view="org.eclipse.ui.views.TaskList"/>
+</fastViewData>
 <perspectiveBar>
 <itemSize x="160"/>
 </perspectiveBar>
@@ -20,6 +21,7 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="232" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.jdt.ui.ClassFileEditorNoSource" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -32,36 +34,50 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
-<part id="2"/>
+<part id="7"/>
 <part id="3"/>
+<part id="2"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SimpleMap.java" partName="SimpleMap.java" path="/home/student/Desktop/Assignment 1/kjv_datastructures/Assignment 9/Assignment 9/SimpleMap.java" title="SimpleMap.java" tooltip="Assignment 9/SimpleMap.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment 9/SimpleMap.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="8" selectionOffset="2622" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1077" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Spell.java" partName="Spell.java" path="/home/student/Desktop/Assignment 1/kjv_datastructures/Assignment 9/Assignment 9/Spell.java" title="Spell.java" tooltip="Assignment 9/Spell.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment 9/Spell.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="725" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="999" selectionTopPixel="148"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UniversalHashes.java" partName="UniversalHashes.java" path="/home/student/Desktop/Assignment 1/kjv_datastructures/Assignment 9/Assignment 9/UniversalHashes.java" title="UniversalHashes.java" tooltip="Assignment 9/UniversalHashes.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment 9/UniversalHashes.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2368" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2333" selectionTopPixel="972"/>
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HashMap.java" partName="HashMap.java" path="/home/student/Desktop/Assignment 1/kjv_datastructures/Assignment 9/Assignment 9/HashMap.java" title="HashMap.java" tooltip="Assignment 9/HashMap.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment 9/HashMap.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="93" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="759" selectionTopPixel="1457"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HashMapTestBase.java" partName="HashMapTestBase.java" path="/home/student/Desktop/Assignment 1/kjv_datastructures/Assignment 9/Assignment 9/HashMapTestBase.java" title="HashMapTestBase.java" tooltip="Assignment 9/HashMapTestBase.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment 9/HashMapTestBase.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="165" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SimpleMapTestBase.java" partName="SimpleMapTestBase.java" path="/home/student/Desktop/Assignment 1/kjv_datastructures/Assignment 9/Assignment 9/SimpleMapTestBase.java" title="SimpleMapTestBase.java" tooltip="Assignment 9/SimpleMapTestBase.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment 9/SimpleMapTestBase.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="190" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MapBench.java" partName="MapBench.java" path="/home/student/Desktop/Assignment 1/kjv_datastructures/Assignment 9/Assignment 9/MapBench.java" title="MapBench.java" tooltip="Assignment 9/MapBench.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment 9/MapBench.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="191" selectionOffset="898" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MapTestBase.java" partName="MapTestBase.java" path="/home/student/Desktop/Assignment 1/kjv_datastructures/Assignment 9/Assignment 9/MapTestBase.java" title="MapTestBase.java" tooltip="Assignment 9/MapTestBase.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment 9/MapTestBase.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1064" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
-<view id="org.eclipse.ui.internal.introview" partName="Welcome">
-<viewState>
-<presentation currentPage="root" restore="true"/>
-<standbyPart/>
-</viewState>
-</view>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="">
@@ -99,7 +115,7 @@
 <category IMemento.internal.id="Warnings (1 item)"/>
 <category IMemento.internal.id="Warnings"/>
 </expanded>
-<columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="695" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
+<columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="835" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="451"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
@@ -107,13 +123,16 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
 </view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
 <view id="org.eclipse.jdt.ui.SourceView" partName="Declaration"/>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
 <view id="org.eclipse.ui.views.TaskList" partName="Tasks">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.completionField" categoryGroup="none" markerContentGenerator="org.eclipse.ui.ide.tasksGenerator" partName="Tasks">
-<columnWidths org.eclipse.ui.ide.completionField="40" org.eclipse.ui.ide.descriptionField="350" org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="105" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.priorityField="35" org.eclipse.ui.ide.resourceField="105"/>
+<columnWidths org.eclipse.ui.ide.completionField="40" org.eclipse.ui.ide.descriptionField="350" org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="620" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.priorityField="35" org.eclipse.ui.ide.resourceField="105"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.completionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.priorityField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.descriptionField"/>
@@ -122,6 +141,9 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
+</view>
+<view id="org.eclipse.jdt.junit.ResultView" partName="JUnit">
+<viewState failuresOnly="false" layout="1" orientation="2" ratio="500" scroll="false" time="true"/>
 </view>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
@@ -163,45 +185,31 @@
 <view id="org.eclipse.ui.views.TaskList"/>
 <view id="org.eclipse.ui.internal.introview"/>
 <fastViewBars/>
-<layout>
-<mainWindow>
-<info folder="true" part="topLeft">
-<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
-<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.team.ccvs.ui.RepositoriesView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@13c947f" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">
-<folder activePageID="org.eclipse.ui.internal.introview" appearance="2" expanded="1">
-<page content="org.eclipse.ui.internal.introview" label="Welcome"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@13c947f" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.internal.introview" appearance="2" expanded="1">&#x0A;<page content="org.eclipse.ui.internal.introview" label="Welcome"/>
 <page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25940594" ratioLeft="262" ratioRight="748" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottomRight" ratio="0.6599064" ratioLeft="423" ratioRight="218" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.TaskList" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
+<info folder="true" part="bottomRight" ratio="0.6599064" ratioLeft="423" ratioRight="218" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.views.TaskList" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.team.ui.GenericHistoryView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="bottomLeft" ratio="0.49921995" ratioLeft="320" ratioRight="321" relationship="4" relative="topLeft">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<info folder="true" part="bottomLeft" ratio="0.49921995" ratioLeft="320" ratioRight="321" relationship="4" relative="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
@@ -255,54 +263,58 @@
 <new_wizard_action id="org.eclipse.jdt.junit.wizards.NewTestCaseCreationWizard"/>
 <perspective_action id="org.eclipse.jdt.ui.JavaBrowsingPerspective"/>
 <perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.RunToLine"/>
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
-<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.jdt.ui.PackageExplorer"/>
+<view id="org.eclipse.jdt.junit.ResultView"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.jdt.ui.JavadocView"/>
 <view id="org.eclipse.jdt.ui.SourceView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.ui.views.TaskList"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
-<view id="org.eclipse.ui.internal.introview"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
 <info folder="true" part="left">
 <folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">
 <page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
+<page content="org.eclipse.jdt.junit.ResultView" label="JUnit"/>
 <page content="org.eclipse.jdt.ui.TypeHierarchy" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.ui.navigator.ProjectExplorer" label="LabelNotFound"/>
-<page content="org.eclipse.jdt.junit.ResultView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
 </presentation>
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@1c10a5f" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="left">
-<folder activePageID="org.eclipse.ui.internal.introview" appearance="2" expanded="2">
-<page content="org.eclipse.ui.internal.introview" label="Welcome"/>
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.24950495" ratioLeft="252" ratioRight="758" relationship="2" relative="left"/>
+<info part="org.eclipse.ui.editorss" ratio="0.2750131" ratioLeft="525" ratioRight="1384" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.7492625" ratioLeft="508" ratioRight="170" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
-<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
@@ -323,79 +335,161 @@
 <workingSets/>
 <navigationHistory>
 <editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment 9/HashMap.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment 9/MapTestBase.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment 9/UniversalHashes.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment 9/SimpleMap.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment 9/Spell.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment 9/UniversalHashes.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment 9/HashMap.java"/>
 </editors>
-<item historyLabel="SimpleMap.java" index="0">
-<position info="not_deleted" x="1029" y="9"/>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="1860" y="0"/>
 </item>
-<item historyLabel="SimpleMap.java" index="0">
-<position info="not_deleted" x="696" y="3"/>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="1333" y="0"/>
 </item>
-<item historyLabel="SimpleMap.java" index="0">
-<position info="not_deleted" x="707" y="0"/>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="856" y="0"/>
 </item>
-<item historyLabel="SimpleMap.java" index="0">
-<position info="not_deleted" x="917" y="4"/>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="888" y="0"/>
 </item>
-<item historyLabel="SimpleMap.java" index="0">
-<position info="not_deleted" x="1029" y="9"/>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="950" y="0"/>
 </item>
-<item historyLabel="SimpleMap.java" index="0">
-<position info="not_deleted" x="696" y="3"/>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="884" y="0"/>
 </item>
-<item historyLabel="Spell.java" index="1">
-<position info="not_deleted" x="725" y="0"/>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="831" y="0"/>
 </item>
-<item historyLabel="SimpleMap.java" index="0">
-<position info="not_deleted" x="696" y="3"/>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="969" y="0"/>
 </item>
-<item historyLabel="SimpleMap.java" index="0">
-<position info="not_deleted" x="77" y="0"/>
+<item historyLabel="MapTestBase.java" index="1">
+<position info="not_deleted" x="1029" y="0"/>
 </item>
-<item historyLabel="SimpleMap.java" index="0">
-<position info="not_deleted" x="2622" y="8"/>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="969" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="3162" y="0"/>
+</item>
+<item historyLabel="MapTestBase.java" index="1">
+<position info="not_deleted" x="1029" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="3162" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="2735" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="2980" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="1524" y="0"/>
+</item>
+<item historyLabel="MapTestBase.java" index="1">
+<position info="not_deleted" x="1029" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="1524" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="3238" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="5681" y="44"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="4056" y="71"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="496" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="496" y="0"/>
+</item>
+<item historyLabel="MapTestBase.java" index="1">
+<position info="not_deleted" x="1029" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="2991" y="37"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="5575" y="0"/>
+</item>
+<item historyLabel="MapTestBase.java" index="1">
+<position info="not_deleted" x="1064" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="3108" y="6"/>
+</item>
+<item historyLabel="SimpleMap.java" index="3">
+<position info="not_deleted" x="1077" y="0"/>
+</item>
+<item historyLabel="MapTestBase.java" index="1">
+<position info="not_deleted" x="1064" y="0"/>
+</item>
+<item historyLabel="SimpleMap.java" index="3">
+<position info="not_deleted" x="1077" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="3108" y="6"/>
 </item>
 <item historyLabel="UniversalHashes.java" index="2">
-<position info="not_deleted" x="0" y="0"/>
+<position info="not_deleted" x="2333" y="0"/>
 </item>
-<item historyLabel="UniversalHashes.java" index="2">
-<position info="not_deleted" x="1220" y="1"/>
+<item historyLabel="Spell.java" index="4">
+<position info="not_deleted" x="1288" y="0"/>
 </item>
-<item historyLabel="UniversalHashes.java" index="2">
-<position info="not_deleted" x="1244" y="1"/>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="890" y="0"/>
 </item>
-<item historyLabel="UniversalHashes.java" index="2">
-<position info="not_deleted" x="1040" y="0"/>
+<item historyLabel="SimpleMap.java" index="3">
+<position info="not_deleted" x="1077" y="0"/>
 </item>
-<item historyLabel="UniversalHashes.java" index="2">
-<position info="not_deleted" x="2368" y="0"/>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="1505" y="0"/>
 </item>
-<item historyLabel="HashMap.java" index="3">
-<position info="not_deleted" x="29" y="0"/>
+<item historyLabel="SimpleMap.java" index="3">
+<position info="not_deleted" x="1077" y="0"/>
 </item>
-<item historyLabel="UniversalHashes.java" index="2">
-<position info="not_deleted" x="2368" y="0"/>
+<item historyLabel="Spell.java" index="4">
+<position info="not_deleted" x="1288" y="0"/>
 </item>
-<item historyLabel="SimpleMap.java" index="0">
-<position info="not_deleted" x="2622" y="8"/>
+<item historyLabel="Spell.java" index="4">
+<position/>
 </item>
-<item historyLabel="HashMap.java" index="3">
-<position info="not_deleted" x="29" y="0"/>
+<item historyLabel="Spell.java" index="4">
+<position info="not_deleted" x="1051" y="0"/>
 </item>
-<item historyLabel="HashMap.java" index="3">
-<position info="not_deleted" x="198" y="0"/>
+<item historyLabel="Spell.java" index="4">
+<position info="not_deleted" x="999" y="0"/>
 </item>
-<item historyLabel="HashMap.java" index="3">
-<position info="not_deleted" x="324" y="0"/>
+<item historyLabel="MapTestBase.java" index="1">
+<position info="not_deleted" x="1064" y="0"/>
 </item>
-<item historyLabel="SimpleMap.java" index="0">
-<position info="not_deleted" x="2622" y="8"/>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="1505" y="0"/>
 </item>
-<item active="true" historyLabel="HashMap.java" index="3">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="320" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="3967" y="0"/>
+</item>
+<item historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="959" y="0"/>
+</item>
+<item historyLabel="Spell.java" index="4">
+<position info="not_deleted" x="999" y="0"/>
+</item>
+<item historyLabel="MapTestBase.java" index="1">
+<position info="not_deleted" x="1064" y="0"/>
+</item>
+<item active="true" historyLabel="HashMap.java" index="0">
+<position info="not_deleted" x="959" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -403,6 +497,13 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="left"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="right"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@1c10a5f"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -410,10 +511,29 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MapBench.java" tooltip="Assignment 9/MapBench.java">
+<persistable path="/Assignment 9/MapBench.java"/>
+</file>
+<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditorNoSource" name="ArrayList.class" tooltip="java.util.ArrayList">
+<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Assignment 9/\/usr\/lib\/jvm\/java-8-openjdk-i386\/jre\/lib\/rt.jar&lt;java.util(ArrayList.class"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SimpleMapTestBase.java" tooltip="Assignment 9/SimpleMapTestBase.java">
+<persistable path="/Assignment 9/SimpleMapTestBase.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HashMapTestBase.java" tooltip="Assignment 9/HashMapTestBase.java">
+<persistable path="/Assignment 9/HashMapTestBase.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MapTestBase.java" tooltip="Assignment 9/MapTestBase.java">
+<persistable path="/Assignment 9/MapTestBase.java"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Object2IntOpenHashMapTest.java" tooltip="/home/student/Downloads/fastutil-7.0.13/test/it/unimi/dsi/fastutil/objects/Object2IntOpenHashMapTest.java">
+<persistable uri="file:/home/student/Downloads/fastutil-7.0.13/test/it/unimi/dsi/fastutil/objects/Object2IntOpenHashMapTest.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HashMap.java" tooltip="Assignment 9/HashMap.java">
 <persistable path="/Assignment 9/HashMap.java"/>
 </file>

@@ -1,0 +1,52 @@
+import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+
+/**MapTestBase.java
+ * Base JUnit4 tester for HashMap
+ * and SimpleMap.
+ * @author root
+ *
+ */
+public abstract class MapTestBase {
+    private Map<String, Integer> map;
+
+    /**Shut up checkstyle.
+     * @return nothin.
+     */
+    protected abstract Map<String, Integer> createMap();
+
+    /**Method to create a new map.
+     * Can be SimpleMap or HashMap.
+     */
+    @Before
+    public void setupMap() {
+        map = this.createMap();
+    }
+
+    /**Tests that the initial length is zero.
+     *
+     */
+    @Test
+    public void testInitialLength() {
+        assertEquals(0, map.size());
+    }
+
+    /**Tests a series of inserts into the map.
+     *
+     */
+    @Test
+    public void testInsert() {
+        for (int i = 0; i < 10; i++) {
+            map.insert(Integer.toString(i), 1);
+        }
+        assertEquals(10, map.size());
+    }
+
+    /**
+     * 
+     */
+    @Test
+    public void test() {
+    }
+}
